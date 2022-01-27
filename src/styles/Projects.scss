@@ -1,0 +1,49 @@
+.project-icon {
+   width: 24px !important;
+    height: 24px !important;
+}
+
+.project-container {
+    margin-left: 400px;
+}
+
+.project-info {
+    max-width: 150px;
+    font-size: 12px;
+}
+
+.projects {
+    display: inline;
+
+    .project-title {
+        color: $blue;
+        padding-top: 2em;
+        margin-left: 6em;
+    }
+}
+
+.project-card {
+    margin-top: 2em;
+    display: inline-grid;
+    justify-content: center;
+    align-content: center;
+    grid-auto-flow: column;
+
+    .single-projects {
+        width: 400px;
+        background: linear-gradient(90deg, $silver 0%, $white 100%); 
+
+        .project-btns {
+            display: flex;
+            text-align: center;
+            justify-content: center;
+            width: 100%;
+            .open-btn, .delete-btn {
+                flex-grow: 1;
+            }
+            .delete-btn {
+                border-bottom: 1px solid red;
+            }
+        }
+    }
+}

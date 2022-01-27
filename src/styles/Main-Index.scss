@@ -1,0 +1,48 @@
+.bg {
+    max-height: 100vh;
+    max-width: 80%;
+    display: flex;
+    flex-wrap: wrap !important;
+
+    .div {
+        margin-left: 16em;
+    }
+    
+    .left {
+        flex-grow: 1;
+        padding-top: 8em;
+        display: flex;
+        justify-content: center;
+        color: $blue;
+    }
+    
+    .right {
+        flex-grow: 1;
+        padding-top: 8em;
+        display: flex;
+        justify-content: center;
+
+        .form {
+            width: 450px;
+        }
+    }
+}
+
+.info {
+    font-size: 3rem;
+}
+
+.kream-logo {
+    font-size: 1.4rem;
+}
+
+.carousel {
+    padding-top: 8em;
+    max-width: 100%;
+    max-height: fit-content;
+
+    .bg-crsl {
+        background-color: $blue;
+        background: linear-gradient(90deg, $black 0%, $blue 100%); 
+    }
+}
