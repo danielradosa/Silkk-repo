@@ -15,8 +15,8 @@
             <h2 class="info">
                 Fill it out. <br>
                 Type carefully. <br> 
-                Got everything right ? <br>
-               Go on then.
+                Got everything ? <br>
+               Login then.
             </h2>
         </div>
         <div class="right">
@@ -57,7 +57,7 @@
         navigation
         padding
         arrows
-        height="735px"
+        height="755px"
         class="bg-crsl text-white"
         @mouseenter="autoplay = false"
         @mouseleave="autoplay = true"

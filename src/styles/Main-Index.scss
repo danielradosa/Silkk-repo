@@ -14,6 +14,10 @@
         display: flex;
         justify-content: center;
         color: $blue;
+
+        .info {
+            font-size: 3rem;
+        }
     }
     
     .right {
@@ -24,12 +28,9 @@
 
         .form {
             width: 450px;
+            padding-bottom: 8em;
         }
     }
-}
-
-.info {
-    font-size: 3rem;
 }
 
 .kream-logo {
@@ -37,12 +38,23 @@
 }
 
 .carousel {
-    padding-top: 8em;
     max-width: 100%;
     max-height: fit-content;
+    bottom: 0;
+    width: 100%;
 
     .bg-crsl {
         background-color: $blue;
         background: linear-gradient(90deg, $black 0%, $blue 100%); 
     }
+}
+
+/////////// RESPONSIVE ////////////////////////////////////////
+@media only screen and (max-width: 600px) {
+    .left { padding-top: 2em !important; }
+    .right { padding-top: 4em !important; }
+    .form { width: 300px !important; padding-bottom: 24em;}
+    .info { font-size: 2rem !important; }
+    .kream-logo { font-size: .8rem !important; }
+    .carousel { display: none; }
 }
