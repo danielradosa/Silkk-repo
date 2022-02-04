@@ -4,7 +4,11 @@
 }
 
 .project-container {
-    margin-left: 400px;
+    margin-left: 12em;
+    display: inline-grid;
+    justify-content: center;
+    align-content: center;
+    grid-auto-flow: column;
 }
 
 .project-info {
@@ -17,7 +21,7 @@
 
     .project-title {
         color: $blue;
-        padding-top: 2em;
+        padding-top: 1.2em;
         margin-left: 6em;
     }
 }
@@ -25,12 +29,9 @@
 .project-card {
     margin-top: 2em;
     display: inline-grid;
-    justify-content: center;
-    align-content: center;
-    grid-auto-flow: column;
-
+    
     .single-projects {
-        width: 400px;
+        width: 600px;
         background: linear-gradient(90deg, $silver 0%, $white 100%); 
 
         .project-btns {

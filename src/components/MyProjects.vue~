@@ -1,0 +1,23 @@
+<template>
+    <div class="projects">
+        <div class="text-h3 project-title">Favourite Projects</div>
+    </div>
+
+    <SingleProject />
+
+   
+    <div class="projects">
+        <div class="text-h3 project-title">All Projects</div>
+    </div>
+
+  </template>
+
+<script lang="ts">
+    import { ref } from 'vue'
+    import { SingleProject } from './SingleProject.vue'
+
+    export default {
+        name: 'myProjects',
+
+    }
+</script>
