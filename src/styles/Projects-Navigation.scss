@@ -1,0 +1,12 @@
+@media only screen and (max-width: 940px) {
+    .dropdown-mobile { display: none; }
+    .outline-mobile { margin-left: -4em; }
+}
+
+@media only screen and (max-width: 800px) {
+    .outline-mobile { margin-left: -6em; }
+}
+
+@media only screen and (max-width: 600px) {
+    .profile-mobile { display: none; }
+}

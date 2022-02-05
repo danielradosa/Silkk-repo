@@ -48,3 +48,21 @@
         }
     }
 }
+
+/////////// RESPONSIVE ////////////////////////////////////////
+@media only screen and (max-width: 800px) {
+    .project-container { margin-left: 4em; }
+    .projects { .project-title { margin-left: 3em; } }
+}
+
+@media only screen and (max-width: 730px) {
+    .project-container { margin-left: 1em; }
+    .projects { .project-title { margin-left: 2em; } }
+    .single-projects { width: 550px !important; }
+}
+
+@media only screen and (max-width: 600px) {
+    .project-container { margin-left: 1em; }
+    .projects { .project-title { margin-left: 1em; } }
+    .single-projects { width: 300px !important; }
+}

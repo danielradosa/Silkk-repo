@@ -43,7 +43,7 @@
         <div class="text-h3 project-title">All Projects</div>
     </div>
 
-    <div v-for="(item, index) in items" :key="item.project" class="project-container">
+    <div v-for="item in items" :key="item.project" class="project-container">
     <div class="q-pa-md project-card">
         <q-card class="my-card single-projects no-shadow no-border-radius">
             <q-img
@@ -67,7 +67,7 @@
 
                         <q-card-actions align="center">
                             <q-btn flat no-caps label="Cancel" color="black" class="no-border-radius" v-close-popup />
-                            <q-btn @click="this.items.$delete(index, 1)" flat no-caps label="Delete" color="red" class="no-border-radius" v-close-popup />
+                            <q-btn flat no-caps label="Delete" color="red" class="no-border-radius" v-close-popup />
                         </q-card-actions>
                     </q-card>
                 </q-dialog>
@@ -91,7 +91,8 @@
                     { project: 'one' },
                     { project: 'two' },
                     { project: 'three' },
-                ]   
+                ],
+                
             }
         }
     }

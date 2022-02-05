@@ -38,6 +38,10 @@ module.exports = configure(function (ctx) {
       'app.scss'
     ],
 
+    config: {
+      dark: 'auto'
+    },
+
     // https://github.com/quasarframework/quasar/tree/dev/extras
     extras: [
       // 'ionicons-v4',
@@ -94,7 +98,7 @@ module.exports = configure(function (ctx) {
       config: {},
 
       // iconSet: 'material-icons', // Quasar icon set
-      // lang: 'en-US', // Quasar language pack
+      lang: 'en-US', // Quasar language pack
 
       // For special cases outside of where the auto-import strategy can have an impact
       // (like functional components as one of the examples),
@@ -146,8 +150,8 @@ module.exports = configure(function (ctx) {
       },
 
       manifest: {
-        name: 'HeavyKream',
-        short_name: 'HeavyKream',
+        name: 'Silkk',
+        short_name: 'SLK',
         description: 'A project management tool.',
         display: 'standalone',
         orientation: 'portrait',
@@ -213,7 +217,7 @@ module.exports = configure(function (ctx) {
       builder: {
         // https://www.electron.build/configuration/configuration
 
-        appId: 'heavykream'
+        appId: 'silkk'
       },
 
       // "chain" is a webpack-chain object https://github.com/neutrinojs/webpack-chain
