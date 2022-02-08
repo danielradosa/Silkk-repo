@@ -8,6 +8,7 @@
 ## Current Tasks
 - [ ] 🔵 **Finish a single project view**
 - [ ] 🔵 **Finish a 404 page view**
+- [ ] 🔵 **New project view creation**
 
 ## Finished Tasks
 - [x] 🟢 **Login page**
