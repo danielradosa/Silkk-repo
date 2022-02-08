@@ -30,7 +30,9 @@
       </q-btn-dropdown>
     </div>
     <div class="q-pa-md">
-      <q-btn class="outline-btn outline-mobile" outline label="Create" no-caps size="md" unelevated />
+      <router-link to="/project/create-new">
+        <q-btn class="outline-btn outline-mobile" outline label="Create" no-caps size="md" unelevated />
+      </router-link>
     </div>
     <q-space />
     <q-avatar size="36px">
