@@ -6,11 +6,11 @@
 5. Run : quasar dev (for development)
 
 ## Current Tasks
-- [ ] 🔵 **Finish a single project view**
-- [ ] 🔵 **Finish a 404 page view**
-- [ ] 🔵 **New project view creation**
+- [ ] 🔵 **Finish a single project view** (FRONT-END)
+- [ ] 🔵 **Finish a 404 page view** (FRONT-END)
+- [ ] 🔵 **New project view creation** (FRONT-END)
 
 ## Finished Tasks
-- [x] 🟢 **Login page**
-- [x] 🟢 **Sign up page**
-- [x] 🟢 **Projects page**
+- [x] 🟢 **Login page** (FRONT-END)
+- [x] 🟢 **Sign up page** (FRONT-END)
+- [x] 🟢 **Projects page** (FRONT-END)
