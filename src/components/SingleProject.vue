@@ -1,6 +1,7 @@
 <template>
-  <div class="q-pa-md">
-    <h2>This is a single project view.</h2>
+  <div class="projects">
+    <div class="text-h3 project-title">Damn good project</div>
+    <div class="text-h5 project-subtitle">created: 13.4.2021</div>
   </div>
 </template>
 
