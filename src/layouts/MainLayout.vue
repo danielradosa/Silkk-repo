@@ -19,7 +19,12 @@
             </h2>
         </div>
         <div class="right">
-            <q-form @submit="onSubmit" @reset="onReset" class="q-gutter-md form">
+            <q-form @submit="onSubmit" 
+                    @reset="onReset" 
+                    class="q-gutter-md form" 
+                    autocorrect="off" 
+                    autocomplete="off"
+                    spellcheck="false">
                 <q-input filled color="black" v-model="name" label="Full Name *" hint="Name and surname" lazy-rules
                     :rules="[ val => val && val.length > 0 || 'Please type something']" />
 

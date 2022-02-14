@@ -55,7 +55,7 @@
             </q-img>
 
             <q-card-actions class="project-btns">
-                <q-btn unelevated size="md" class="open-btn no-border-radius dropdown-btn">Open</q-btn>
+                    <q-btn unelevated size="md" class="open-btn no-border-radius dropdown-btn">Open</q-btn>
                 <q-btn flat no-caps unelevated size="md" class="delete-btn no-border-radius" color="red"
                     @click="confirm = true">Delete</q-btn>
 
@@ -88,9 +88,9 @@
             return {
                 confirm: ref(false),
                 items: [
-                    { project: 'one' },
-                    { project: 'two' },
-                    { project: 'three' },
+                    { project: 'one', router: '/project', id: 1 },
+                    { project: 'two', router: '/project', id: 2 },
+                    { project: 'three', router: '/project', id: 3 },
                 ],
                 
             }

@@ -20,7 +20,12 @@
             </h2>
         </div>
         <div class="right">
-            <q-form @submit="onSubmit" @reset="onReset" class="q-gutter-md form">
+            <q-form @submit="onSubmit" 
+                    @reset="onReset" 
+                    class="q-gutter-md form"
+                    autocorrect="off"
+                    autocapitalize="off"
+                    spellchech="false">
 
                 <q-input filled color="black" v-model="email" label="Your Email *" hint="Your Email" lazy-rules
                     :rules="['Please type something']" />
