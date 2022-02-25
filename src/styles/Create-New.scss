@@ -5,7 +5,7 @@
 
 .create-form {
   margin-top: 2em;
-  width: 350px !important;
+  width: 400px !important;  
   margin-left: 10.5%;
 }
 
@@ -30,4 +30,8 @@
 .q-date__header {
   background-color: white !important;
   color: $blue;
+}
+
+// RESPONSIVE STUFF
+@media only screen and (max-width: 1920) {
 }
