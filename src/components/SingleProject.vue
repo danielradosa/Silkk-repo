@@ -1,6 +1,6 @@
 <template>
   <div class="projects">
-    <div class="text-h3 project-title">Damn good project</div>
+    <div class="text-h3 project-title">{{item.project}}</div>
     <div class="text-h5 project-subtitle">Created: {{allStuff}}</div>
   </div>
 </template>
@@ -14,7 +14,7 @@
       let year = currentDate.getFullYear();
       let allStuff = `${day}. ${month}. ${year}`
       return {
-       allStuff
+        allStuff,
       };
     },
     name: 'singleProject',
