@@ -1,22 +1,26 @@
 <template>
   <div class="projects">
-    <div class="text-h3 project-title">{{item.project}}</div>
-    <div class="text-h5 project-subtitle">Created: {{allStuff}}</div>
+    <div class="text-h3 project-title">{{ name }}</div>
+    <div class="text-h5 project-subtitle">
+      Created: {{ date }}
+    </div>
   </div>
 </template>
 
 <script lang="ts">
-  export default {
-    setup() {
-      let currentDate = new Date();
-      let day = currentDate.getDate();
-      let month = currentDate.getMonth() + 1;
-      let year = currentDate.getFullYear();
-      let allStuff = `${day}. ${month}. ${year}`
-      return {
-        allStuff,
-      };
-    },
-    name: 'singleProject',
-  };
+//import { ref } from 'vue'
+import { useRoute } from 'vue-router';
+export default {
+  setup() {
+    const route = useRoute();
+    const id = route.params.id;
+    const name = route.params.name;
+    const date = route.params.created;
+
+    return {
+      id, name, date
+    }
+  },
+  name: 'singleProject',
+};
 </script>

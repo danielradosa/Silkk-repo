@@ -7,19 +7,20 @@ const routes: RouteRecordRaw[] = [
     children: [{ path: '', component: () => import('pages/Index.vue') }],
   },
   {
-    path: '/projects',
+    path: '/projects/all',
     component: () => import('layouts/ProjectLayout.vue'),
     children: [{ path: '', component: () => import('pages/Projects.vue') }],
   },
   {
-    path: '/project/:id',
+    path: '/project/:name/:id',
+    props: true,
     component: () => import('layouts/SingleProLayout.vue'),
     children: [{ path: '', component: () => import('pages/Project.vue') }],
   },
   {
     path: '/project/create-new',
     component: () => import('layouts/CreateLayout.vue'),
-    children: [{ path: '', component: () => import('pages/Project.vue') }],
+    children: [{ path: '', component: () => import('pages/Create.vue') }],
   },
   {
     path: '/login',

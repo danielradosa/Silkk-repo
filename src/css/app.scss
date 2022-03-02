@@ -3,10 +3,10 @@
 
 // app global css in SCSS form
 * {
-    box-sizing: border-box;
-    margin: 0 auto;
-    padding: 0;
-    font-family: $defaultFont;
+  box-sizing: border-box;
+  margin: 0 auto;
+  padding: 0;
+  font-family: $defaultFont;
 }
 
 .main {
@@ -17,13 +17,13 @@
 }
 
 footer {
-    bottom: 0;
-    position: fixed;
+  bottom: 0;
+  position: fixed;
 }
 
 .navigation {
   background-color: $silver;
-  background: linear-gradient(90deg, $white 0%, $silver 100%); 
+  background: linear-gradient(90deg, $white 0%, $silver 100%);
   max-width: 100%;
   display: flex;
   height: 90px;
@@ -36,7 +36,7 @@ footer {
   width: 150px;
   border-bottom: 1px solid $black;
   border-radius: 0px;
-  padding: .3em 1em .3em 1em;
+  padding: 0.3em 1em 0.3em 1em;
 }
 
 .outline-btn {
@@ -46,3 +46,10 @@ footer {
 }
 
 // DARK MODE
+.body--light {
+  background-color: $white !important;
+}
+
+.body--dark {
+  background-color: #000000 !important;
+}

@@ -75,26 +75,27 @@
     <div class="text-h3 project-title">All Projects</div>
   </div>
 
-  <div v-for="item in items" :key="item.project" class="project-container">
+  <div v-for="item in items" :key="item.name" class="project-container">
     <div class="q-pa-md project-card">
       <q-card class="my-card single-projects no-shadow no-border-radius">
         <q-img
           src="https://res.cloudinary.com/practicaldev/image/fetch/s--9yBkqrjS--/c_imagga_scale,f_auto,fl_progressive,h_500,q_auto,w_1000/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/nphrgz8yfnjylrwfr0yl.png"
         >
           <div class="absolute-bottom">
-            <div class="text-h6">{{item.project}}</div>
-            <div class="text-subtitle2">by Big Boi</div>
+            <div class="text-h6">{{ item.name }}</div>
+            <div class="text-subtitle2">by {{ item.author }}</div>
           </div>
         </q-img>
 
         <q-card-actions class="project-btns">
           <q-btn
-            :to="item.router + '/' + item.id"
             unelevated
             size="md"
             class="open-btn no-border-radius dropdown-btn"
-            >Open</q-btn
-          >
+            :to="{ path: '/project/' + item.name + '/' + item.id }"
+            >Open
+          </q-btn>
+
           <q-btn
             flat
             no-caps
@@ -148,9 +149,9 @@ export default {
     return {
       confirm: ref(false),
       items: [
-        { project: 'one', router: '/project', id: '302a49g8Aa43' },
-        { project: 'two', router: '/project', id: '65at9g847a11' },
-        { project: 'three', router: '/project', id: '538s3fg4782f' },
+        { name: 'good project', id: '302a49g8Aa43', author: 'Josh', created: '2017-05-12T23:28:56.782Z' },
+        { name: 'okay fine', id: '65at9g847a11', author: 'Tray', created: '2014-03-06T23:28:56.782Z' },
+        { name: 'let me see', id: '538s3fg4782f', author: 'Martin', created: '2022-01-21T23:28:56.782Z' },
       ],
     };
   },
