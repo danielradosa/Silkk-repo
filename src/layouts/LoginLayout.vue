@@ -39,7 +39,7 @@
                 </q-input>
 
                 <div>
-                    <q-btn label="Login" type="submit" to="/projects/all" class="outline-btn" outline unelevated />
+                    <q-btn label="Login" type="submit" to="/projects" class="outline-btn" outline unelevated />
                 </div>
             </q-form>
 
