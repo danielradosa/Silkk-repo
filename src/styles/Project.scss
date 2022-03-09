@@ -2,6 +2,10 @@
     color: $blue;
     margin-left: 12em;
     margin-top: 0.5em;
+
+    span {
+        color: $dark-gray;
+    }
 }
 
 a {

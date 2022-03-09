@@ -12,7 +12,7 @@
 .main {
   width: 100%;
   height: 100vh;
-  background-color: $white;
+  background-color: $off-white;
   color: $dark-gray;
 }
 
@@ -23,7 +23,7 @@ footer {
 
 .navigation {
   background-color: $silver;
-  background: linear-gradient(90deg, $white 0%, $silver 100%);
+  background: linear-gradient(90deg, $off-white 0%, $silver 100%);
   max-width: 100%;
   display: flex;
   height: 90px;
@@ -42,10 +42,10 @@ footer {
 .outline-btn {
   width: 150px;
   color: $black;
-  background-color: $white;
+  background-color: $off-white;
 }
 
 // DARK MODE
 .body--light {
-  background-color: $white !important;
+  background-color: $off-white !important;
 }
