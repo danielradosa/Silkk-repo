@@ -1,8 +1,8 @@
 <template>
   <div class="projects">
-    <div class="text-h3 project-title">{{ name }}</div>
+    <div class="text-h3 project-single-title">{{ name }}</div>
     <div class="text-h5 project-subtitle">
-      Created: <span> {{ date }}</span>
+      Created: <span> {{ date }} - {{ auther }}</span>
     </div>
   </div>
 </template>

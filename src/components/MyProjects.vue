@@ -110,7 +110,7 @@
           <q-dialog v-model="confirm" persistent class="dialog no-shadow">
             <q-card>
               <q-card-section class="row items-center">
-                <span class="q-ml-sm"
+                <span class="q-ml-sm text-dark"
                   >Are you sure you want to delete this project?</span
                 >
               </q-card-section>

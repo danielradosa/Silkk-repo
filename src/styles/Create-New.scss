@@ -5,8 +5,8 @@
 
 .create-form {
   margin-top: 2em;
-  width: 400px !important;  
-  margin-left: 10.5%;
+  width: 400px !important;
+  margin-left: 13.5%;
 }
 
 .back-btn {
@@ -34,4 +34,15 @@
 
 // RESPONSIVE STUFF
 @media only screen and (max-width: 1920) {
+}
+
+.project-create-title {
+  color: $blue;
+  padding-top: 1.2em;
+  margin-left: 6em;
+}
+
+.logo-btn
+{
+  outline: none;
 }

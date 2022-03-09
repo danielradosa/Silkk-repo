@@ -22,17 +22,17 @@
     .project-title {
         color: $blue;
         padding-top: 1.2em;
-        margin-left: 6em;
+        margin-left: 4em;
     }
 }
 
 .project-card {
     margin-top: 2em;
     display: inline-grid;
-    
+
     .single-projects {
         width: 600px;
-        background: linear-gradient(90deg, $silver 0%, $white 100%); 
+        background: linear-gradient(90deg, $silver 0%, $white 100%);
 
         .project-btns {
             display: flex;
