@@ -173,7 +173,7 @@ export default {
         ) {
           // Post data
           const send = await axios
-            .post('http://localhost:4000/api/user/register', {
+            .post('https://sill-api-app.herokuapp.com/api/user/register', {
               name: name.value,
               email: email.value,
               password: password.value,
