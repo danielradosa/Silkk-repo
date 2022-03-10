@@ -29,36 +29,53 @@
     </div>
     <div class="right">
       <q-form
-        @submit="onSubmit()"
+        @submit.prevent="onSubmit"
         class="q-gutter-md form"
         autocorrect="on"
         autocomplete="on"
-        spellcheck="false"
+        spellcheck="true"
       >
         <q-input
           filled
           color="black"
           v-model="name"
+          name="name"
           label="Full Name *"
           hint="Name and surname"
           lazy-rules
-          :rules="[(val) => (val && val.length > 0) || 'Please type something']"
+          :rules="[
+            (val) =>
+              (val && val.length > 4) ||
+              'Name must be longer than 4 characters.',
+          ]"
         />
 
         <q-input
           filled
           color="black"
           v-model="email"
+          name="email"
+          type="email"
           label="Your Email *"
           hint="Your Email"
           lazy-rules
-          :rules="['Please type something']"
+          :rules="[
+            (val) =>
+              (val && val.length > 9) ||
+              'Mail must be longer than 9 characters',
+          ]"
         />
 
         <q-input
           v-model="password"
+          name="password"
           filled
           color="black"
+          :rules="[
+            (val) =>
+              (val && val.length > 6) ||
+              'Password must be longer than 6 characters',
+          ]"
           :type="isPwd ? 'password' : 'text'"
           hint="Your Password"
         >
@@ -70,12 +87,6 @@
             />
           </template>
         </q-input>
-
-        <q-toggle
-          v-model="accept"
-          label="I accept the license and terms"
-          color="black"
-        />
 
         <div>
           <q-btn
@@ -106,7 +117,7 @@
       navigation
       padding
       arrows
-      height="607px"
+      height="663px"
       class="bg-crsl text-white"
       @mouseenter="autoplay = false"
       @mouseleave="autoplay = true"
@@ -134,28 +145,84 @@
 </template>
 
 <script lang="ts">
-import { useQuasar } from 'quasar';
 import { ref } from 'vue';
+import { useQuasar } from 'quasar';
+import axios from 'axios';
 
 export default {
   setup() {
     const $q = useQuasar();
-    const name = ref(null);
-    const email = ref(null);
-    const password = ref(null);
-    const accept = ref(false);
+    const name = ref('');
+    const email = ref('');
+    const password = ref('');
 
     return {
       slide: ref(1),
       autoplay: ref(true),
-      accept,
       name,
       email,
       password,
       isPwd: ref(true),
 
-      onSubmit() {
-        //
+      async onSubmit() {
+        // Check if fields are not empty
+        if (
+          name.value != null &&
+          email.value != null &&
+          password.value != null
+        ) {
+          // Post data
+          const send = await axios
+            .post('http://localhost:4000/api/user/register', {
+              name: name.value,
+              email: email.value,
+              password: password.value,
+            })
+            .then((res) => {
+              // Show loader
+              $q.loading.show();
+              // Redirect
+              setTimeout(() => (window.location.href = '#/login'), 2000);
+              // Hide Loader
+              setTimeout(() => $q.loading.hide(), 3000);
+              // Show success notification
+              setTimeout(
+                () =>
+                  $q.notify({
+                    type: 'positive',
+                    message: 'Account created succesfully',
+                  }),
+                4000
+              );
+              setTimeout(
+                () =>
+                  $q.notify({ type: 'positive', message: 'Please login now' }),
+                6000
+              );
+              console.log(res);
+            })
+            .catch((error) => {
+              $q.notify({
+                type: 'negative',
+                message: 'Account could not be created',
+              });
+              setTimeout(
+                () =>
+                  $q.notify({
+                    type: 'negative',
+                    message: 'Email already exists',
+                  }),
+                2000
+              );
+              console.log(error);
+            });
+          console.warn(send);
+        } else {
+          $q.notify({
+            type: 'negative',
+            message: 'Please check your details',
+          });
+        }
       },
     };
   },

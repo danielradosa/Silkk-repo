@@ -109,22 +109,7 @@
                 isPwd: ref(true),
 
                 onSubmit() {
-                  /*  if (email !== null) {
-                        $q.notify({
-                            color: 'red-5',
-                            textColor: 'white',
-                            icon: 'warning',
-                            message: 'You need to accept the license and terms first'
-                        })
-                    }
-                    else {
-                        $q.notify({
-                            color: 'green-4',
-                            textColor: 'white',
-                            icon: 'cloud_done',
-                            message: 'Submitted'
-                        })
-                    } */
+                  //
                 },
             }
         }
