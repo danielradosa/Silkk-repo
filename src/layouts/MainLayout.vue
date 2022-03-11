@@ -200,6 +200,7 @@ export default {
                 6000
               );
               console.log(res);
+              localStorage.setItem('User: ', name.value);
             })
             .catch((error) => {
               $q.notify({

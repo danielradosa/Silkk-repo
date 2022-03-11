@@ -21,7 +21,6 @@
         </div>
         <div class="right">
             <q-form @submit="onSubmit" 
-                    @reset="onReset" 
                     class="q-gutter-md form"
                     autocorrect="off"
                     autocapitalize="off"
@@ -39,7 +38,7 @@
                 </q-input>
 
                 <div>
-                    <q-btn label="Login" type="submit" to="/projects" class="outline-btn" outline unelevated />
+                    <q-btn label="Login" type="submit" class="outline-btn" outline unelevated />
                 </div>
             </q-form>
 
@@ -92,28 +91,80 @@
 </template>
 
 <script lang="ts">
-  //  import { useQuasar } from 'quasar'
-    import { ref } from 'vue'
+import { ref } from 'vue';
+import { useQuasar } from 'quasar';
+import axios from 'axios';
 
-    export default {
-        setup() {
-           // const $q = useQuasar()
+export default {
+  setup() {
+    const $q = useQuasar();
+    const email = ref('');
+    const password = ref('');
 
-            const email = ref(null)
+    return {
+      slide: ref(1),
+      autoplay: ref(true),
+      email,
+      password,
+      isPwd: ref(true),
 
-            return {
-                slide: ref(1),
-                autoplay: ref(true),
-                email,
-                password: ref(''),
-                isPwd: ref(true),
-
-                onSubmit() {
-                  //
-                },
-            }
+      async onSubmit() {
+        // Check if fields are not empty
+        if (
+          email.value != null &&
+          password.value != null
+        ) {
+          // Post data
+          const send = await axios
+            .post('https://sill-api-app.herokuapp.com/api/user/login', {
+              email: email.value,
+              password: password.value,
+            })
+            .then((res) => {
+              // Show loader
+              $q.loading.show();
+              // Redirect
+              setTimeout(() => (window.location.href = '#/projects'), 2000);
+              // Hide Loader
+              setTimeout(() => $q.loading.hide(), 3000);
+              // Show success notification
+              setTimeout(
+                () =>
+                  $q.notify({
+                    type: 'positive',
+                    message: 'You have logged in succesfully',
+                  }),
+                4000
+              );
+              console.log(res);
+              localStorage.setItem('User: ', email.value);
+            })
+            .catch((error) => {
+              $q.notify({
+                type: 'negative',
+                message: 'We could not log you in',
+              });
+              setTimeout(
+                () =>
+                  $q.notify({
+                    type: 'negative',
+                    message: 'Please check your details',
+                  }),
+                2000
+              );
+              console.log(error);
+            });
+          console.warn(send);
+        } else {
+          $q.notify({
+            type: 'negative',
+            message: 'Please check your details',
+          });
         }
-    }
+      },
+    };
+  },
+};
 </script>
 
 <style lang="scss">
