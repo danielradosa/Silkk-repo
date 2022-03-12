@@ -7,13 +7,3 @@ https://silkk.netlify.app/#/
 3. Clone repository
 4. Run : npm install
 5. Run : quasar dev (for development)
-
-## Current Tasks
-- [ ] 🔵 **Finish a single project view** (FRONT-END)
-
-## Finished Tasks
-- [x] 🟢 **Login page** (FRONT-END)
-- [x] 🟢 **Sign up page** (FRONT-END)
-- [x] 🟢 **Projects page** (FRONT-END)
-- [x] 🟢 **Finish a 404 page view** (FRONT-END)
-- [x] 🟢 **New project view creation** (FRONT-END)
