@@ -10,12 +10,12 @@
         unelevated
         size="md"
         label="Recent"
-        @click="onMainClick"
+        @click="faveProjects"
       >
         <q-item
           clickable
           v-close-popup
-          @click="onItemClick"
+          @click="normProjects"
           class="project-info no-shadow"
         >
           <q-avatar square>
@@ -37,14 +37,8 @@
         unelevated
         size="md"
         label="Favourite"
-        @click="onMainClick"
       >
-        <q-item
-          clickable
-          v-close-popup
-          @click="onItemClick"
-          class="project-info"
-        >
+        <q-item clickable v-close-popup class="project-info">
           <q-avatar square>
             <img
               src="https://ih1.redbubble.net/image.2463901569.5288/st,small,507x507-pad,600x600,f8f8f8.jpg"
@@ -84,7 +78,6 @@
         label="My Profile"
       >
         <div class="row no-wrap q-pa-md">
-
           <div class="column">
             <q-avatar size="72px">
               <img
@@ -92,11 +85,15 @@
               />
             </q-avatar>
 
-            <div class="text-subtitle1 q-mt-md q-mb-xs">Dango</div>
+            <div class="text-subtitle1 q-mt-md q-mb-xs text-black">
+              {{ user }}
+            </div>
 
             <q-btn
               class="outline-btn"
               label="Logout"
+              type="submit"
+              @click="logoutUser"
               unelevated
               outline
               size="sm"
@@ -110,23 +107,42 @@
 </template>
 
 <script lang="ts">
-  import { ref } from 'vue'
+//import axios from 'axios';
+import { useQuasar } from 'quasar';
+import Cookies from 'js-cookie';
+export default {
+  setup() {
+    const $q = useQuasar();
+    let user = Cookies.get('userEmail')
 
-  export default {
-    setup() {
-      return {
-        onMainClick() {
-          // console.log('Clicked on main button')
-        },
+    return {
+      user,
 
-        onItemClick() {
-          // console.log('Clicked on an Item')
-        },
+      faveProjects() {
+        //
+      },
 
-        darkMode: ref('Light Mode'),
-        adverts: ref('Adverts On'),
-      };
-    },
-    name: 'Navigation',
-  };
+      normProjects() {
+        //
+      },
+
+      logoutUser() {
+        if (user) {
+          $q.loading.show();
+          setTimeout(() => (window.location.href = '#/login'), 2000);
+          setTimeout(() => $q.loading.hide(), 3000);
+          setTimeout(
+            () =>
+              $q.notify({
+                type: 'positive',
+                message: 'You have been logged out',
+              }),
+            4000
+          );
+        }
+      },
+    };
+  },
+  name: 'Navigation',
+};
 </script>

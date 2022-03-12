@@ -20,7 +20,7 @@
             </h2>
         </div>
         <div class="right">
-            <q-form @submit="onSubmit" 
+            <q-form @submit.prevent="onSubmit" 
                     class="q-gutter-md form"
                     autocorrect="off"
                     autocapitalize="off"
@@ -94,6 +94,7 @@
 import { ref } from 'vue';
 import { useQuasar } from 'quasar';
 import axios from 'axios';
+import Cookies from 'js-cookie';
 
 export default {
   setup() {
@@ -123,6 +124,8 @@ export default {
             .then((res) => {
               // Show loader
               $q.loading.show();
+              // Auth token
+
               // Redirect
               setTimeout(() => (window.location.href = '#/projects'), 2000);
               // Hide Loader
@@ -138,6 +141,7 @@ export default {
               );
               console.log(res);
               localStorage.setItem('User: ', email.value);
+              Cookies.set('userEmail', `${email.value}`, { expires: 7, path: '' });
             })
             .catch((error) => {
               $q.notify({

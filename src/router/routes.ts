@@ -8,17 +8,20 @@ const routes: RouteRecordRaw[] = [
   },
   {
     path: '/projects',
+    meta: { requiresAuth: true },
     component: () => import('layouts/ProjectLayout.vue'),
     children: [{ path: '', component: () => import('pages/Projects.vue') }],
   },
   {
     path: '/project/:id',
+    meta: { requiresAuth: true },
     props: true,
     component: () => import('layouts/SingleProLayout.vue'),
     children: [{ path: '', component: () => import('pages/Project.vue') }],
   },
   {
     path: '/project/create-new',
+    meta: { requiresAuth: true },
     component: () => import('layouts/CreateLayout.vue'),
     children: [{ path: '', component: () => import('pages/Create.vue') }],
   },
