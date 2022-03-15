@@ -4,6 +4,7 @@
     <div class="text-h5 project-subtitle">
       Created: <span> {{ deadline }} - {{ author }}</span>
     </div>
+    <div> {{ description }} </div>
   </div>
 </template>
 
