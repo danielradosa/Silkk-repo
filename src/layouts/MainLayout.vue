@@ -29,7 +29,7 @@
     </div>
     <div class="right">
       <q-form
-        @submit.prevent="onSubmit"
+        @submit.prevent="signUp"
         class="q-gutter-md form"
         autocorrect="on"
         autocomplete="on"
@@ -155,16 +155,8 @@ export default {
     const name = ref('');
     const email = ref('');
     const password = ref('');
-
-    return {
-      slide: ref(1),
-      autoplay: ref(true),
-      name,
-      email,
-      password,
-      isPwd: ref(true),
-
-      async onSubmit() {
+    
+    const signUp = async () => {
         // Check if fields are not empty
         if (
           name.value != null &&
@@ -224,7 +216,17 @@ export default {
             message: 'Please check your details',
           });
         }
-      },
+      }
+
+    return {
+      slide: ref(1),
+      autoplay: ref(true),
+      name,
+      email,
+      password,
+      isPwd: ref(true),
+      signUp
+      
     };
   },
 };

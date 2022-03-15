@@ -20,7 +20,7 @@
             </h2>
         </div>
         <div class="right">
-            <q-form @submit.prevent="onSubmit" 
+            <q-form @submit.prevent="logIn" 
                     class="q-gutter-md form"
                     autocorrect="off"
                     autocapitalize="off"
@@ -102,14 +102,7 @@ export default {
     const email = ref('');
     const password = ref('');
 
-    return {
-      slide: ref(1),
-      autoplay: ref(true),
-      email,
-      password,
-      isPwd: ref(true),
-
-      async onSubmit() {
+    const logIn = async () => {
         // Check if fields are not empty
         if (
           email.value != null &&
@@ -125,7 +118,8 @@ export default {
               // Show loader
               $q.loading.show();
               // Auth token
-
+              //const tokenCookie = res.data.token;
+              //Cookies.set('token', tokenCookie);
               // Redirect
               setTimeout(() => (window.location.href = '#/projects'), 2000);
               // Hide Loader
@@ -165,7 +159,16 @@ export default {
             message: 'Please check your details',
           });
         }
-      },
+      }
+
+    return {
+      slide: ref(1),
+      autoplay: ref(true),
+      email,
+      password,
+      isPwd: ref(true),
+      logIn
+      
     };
   },
 };
