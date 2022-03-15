@@ -10,7 +10,7 @@
     <div class="q-pa-md project-card">
       <q-card class="my-card single-projects no-shadow no-border-radius">
         <q-img
-          src="https://res.cloudinary.com/practicaldev/image/fetch/s--9yBkqrjS--/c_imagga_scale,f_auto,fl_progressive,h_500,q_auto,w_1000/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/nphrgz8yfnjylrwfr0yl.png"
+          src="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/nphrgz8yfnjylrwfr0yl.png"
         >
           <div class="absolute-bottom">
             <div class="text-h6">
