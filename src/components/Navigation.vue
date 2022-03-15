@@ -1,5 +1,5 @@
 <template>
-  <q-bar class="navigation">
+  <q-bar class="navigation" v-if="user">
     <div class="q-pa-md">
       <span  class="text-h5 kream-logo"><q-btn to="../projects" unelevated style="none" size="1em">Silkk™</q-btn></span>      
     </div>
@@ -93,7 +93,7 @@
               class="outline-btn"
               label="Logout"
               type="submit"
-              @click="logoutUser"
+              @click="logOut"
               unelevated
               outline
               size="sm"
@@ -105,19 +105,36 @@
     </div>
   </q-bar>
 
+  <q-bar class="navigation" v-else>
+    <div class="q-pa-md">
+      <span class="kream-logo"><b>Silkk™</b> | project management tool</span>
+    </div>
+    <q-space />
+    <div class="q-pa-md">
+      <q-btn
+        class="outline-btn"
+        to="/login"
+        outline
+        label="Login"
+        no-caps
+        size="md"
+        unelevated
+      />
+    </div>
+  </q-bar>
   
 </template>
 
 <script lang="ts">
-//import axios from 'axios';
-import { useQuasar } from 'quasar';
-import Cookies from 'js-cookie';
+import user_crud from 'src/modules/user_crud';
+
 export default {
   setup() {
-    const $q = useQuasar();
-    let user = Cookies.get('userEmail')
+    const userCrud = user_crud
+    const { logOut, user } = userCrud()
 
     return {
+      logOut,
       user,
 
       faveProjects() {
@@ -128,21 +145,7 @@ export default {
         //
       },
 
-      logoutUser() {
-        if (user) {
-          $q.loading.show();
-          setTimeout(() => (window.location.href = '#/login'), 2000);
-          setTimeout(() => $q.loading.hide(), 3000);
-          setTimeout(
-            () =>
-              $q.notify({
-                type: 'positive',
-                message: 'You have been logged out',
-              }),
-            4000
-          );
-        }
-      },
+      
     };
   },
   name: 'Navigation',

@@ -16,6 +16,17 @@
     text-align: center;
 }
 
+.err-link {
+    color: $blue;
+    border-bottom: 3px solid $blue;
+    transition: .3s ease-in;
+}
+
+.err-link:hover {
+    color: $silver;
+    border-bottom: 3px solid $silver;
+}
+
 .project-info {
     max-width: 150px;
     font-size: 12px;

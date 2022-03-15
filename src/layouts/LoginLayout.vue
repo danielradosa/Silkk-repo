@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 <template>
     <q-bar class="navigation">
         <div class="q-pa-md">
@@ -20,7 +22,7 @@
             </h2>
         </div>
         <div class="right">
-            <q-form @submit.prevent="logIn" 
+            <q-form @submit="logIn" 
                     class="q-gutter-md form"
                     autocorrect="off"
                     autocapitalize="off"
@@ -91,84 +93,27 @@
 </template>
 
 <script lang="ts">
-import { ref } from 'vue';
-import { useQuasar } from 'quasar';
-import axios from 'axios';
-import Cookies from 'js-cookie';
+import user_crud from 'src/modules/user_crud';
 
 export default {
   setup() {
-    const $q = useQuasar();
-    const email = ref('');
-    const password = ref('');
 
-    const logIn = async () => {
-        // Check if fields are not empty
-        if (
-          email.value != null &&
-          password.value != null
-        ) {
-          // Post data
-          const send = await axios
-            .post('https://sill-api-app.herokuapp.com/api/user/login', {
-              email: email.value,
-              password: password.value,
-            })
-            .then((res) => {
-              // Show loader
-              $q.loading.show();
-              // Auth token
-              //const tokenCookie = res.data.token;
-              //Cookies.set('token', tokenCookie);
-              // Redirect
-              setTimeout(() => (window.location.href = '#/projects'), 2000);
-              // Hide Loader
-              setTimeout(() => $q.loading.hide(), 3000);
-              // Show success notification
-              setTimeout(
-                () =>
-                  $q.notify({
-                    type: 'positive',
-                    message: 'You have logged in succesfully',
-                  }),
-                4000
-              );
-              console.log(res);
-              localStorage.setItem('User: ', email.value);
-              Cookies.set('userEmail', `${email.value}`, { expires: 7, path: '' });
-            })
-            .catch((error) => {
-              $q.notify({
-                type: 'negative',
-                message: 'We could not log you in',
-              });
-              setTimeout(
-                () =>
-                  $q.notify({
-                    type: 'negative',
-                    message: 'Please check your details',
-                  }),
-                2000
-              );
-              console.log(error);
-            });
-          console.warn(send);
-        } else {
-          $q.notify({
-            type: 'negative',
-            message: 'Please check your details',
-          });
-        }
-      }
+    const userCrud = user_crud
+    const { email, password, logIn, isPwd, slide, autoplay, user } = userCrud()
 
+    if(user) {
+      window.location.href = '#/projects'
+    }
+    
     return {
-      slide: ref(1),
-      autoplay: ref(true),
-      email,
-      password,
-      isPwd: ref(true),
-      logIn
-      
+     userCrud,
+     email,
+     password,
+     logIn,
+     isPwd,
+     slide,
+     autoplay,
+     user
     };
   },
 };

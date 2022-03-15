@@ -22,7 +22,7 @@
       <h2 class="info">
         Silkk™ is a free project management tool. <br />
         Think Tr*llo, but better. <br />
-   <br class="q-ma-md">
+        <br class="q-ma-md" />
         So what are you waiting for ? <br />
         Try it now & don't forget to tell your friends.
       </h2>
@@ -145,88 +145,38 @@
 </template>
 
 <script lang="ts">
-import { ref } from 'vue';
-import { useQuasar } from 'quasar';
-import axios from 'axios';
+import user_crud from 'src/modules/user_crud';
 
 export default {
   setup() {
-    const $q = useQuasar();
-    const name = ref('');
-    const email = ref('');
-    const password = ref('');
-    
-    const signUp = async () => {
-        // Check if fields are not empty
-        if (
-          name.value != null &&
-          email.value != null &&
-          password.value != null
-        ) {
-          // Post data
-          const send = await axios
-            .post('https://sill-api-app.herokuapp.com/api/user/register', {
-              name: name.value,
-              email: email.value,
-              password: password.value,
-            })
-            .then((res) => {
-              // Show loader
-              $q.loading.show();
-              // Redirect
-              setTimeout(() => (window.location.href = '#/login'), 2000);
-              // Hide Loader
-              setTimeout(() => $q.loading.hide(), 3000);
-              // Show success notification
-              setTimeout(
-                () =>
-                  $q.notify({
-                    type: 'positive',
-                    message: 'Account created succesfully',
-                  }),
-                4000
-              );
-              setTimeout(
-                () =>
-                  $q.notify({ type: 'positive', message: 'Please login now' }),
-                6000
-              );
-              console.log(res);
-              localStorage.setItem('User: ', name.value);
-            })
-            .catch((error) => {
-              $q.notify({
-                type: 'negative',
-                message: 'Account could not be created',
-              });
-              setTimeout(
-                () =>
-                  $q.notify({
-                    type: 'negative',
-                    message: 'Email already exists',
-                  }),
-                2000
-              );
-              console.log(error);
-            });
-          console.warn(send);
-        } else {
-          $q.notify({
-            type: 'negative',
-            message: 'Please check your details',
-          });
-        }
-      }
-
-    return {
-      slide: ref(1),
-      autoplay: ref(true),
+    const userCrud = user_crud;
+    const {
       name,
       email,
       password,
-      isPwd: ref(true),
-      signUp
-      
+      logIn,
+      isPwd,
+      slide,
+      autoplay,
+      user,
+      signUp,
+    } = userCrud();
+
+    if (user) {
+      window.location.href = '#/projects';
+    }
+
+    return {
+      name,
+      userCrud,
+      email,
+      password,
+      logIn,
+      signUp,
+      isPwd,
+      slide,
+      autoplay,
+      user,
     };
   },
 };
