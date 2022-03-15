@@ -9,9 +9,7 @@
   <div class="project-container">
     <div class="q-pa-md project-card">
       <q-card class="my-card single-projects no-shadow no-border-radius">
-        <q-img
-          src="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/nphrgz8yfnjylrwfr0yl.png"
-        >
+        <q-img src="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/nphrgz8yfnjylrwfr0yl.png">
           <div class="absolute-bottom">
             <div class="text-h6">
               Damn good project
