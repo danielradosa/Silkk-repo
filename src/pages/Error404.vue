@@ -43,4 +43,8 @@
     color: white;
     background-color: black;
 }
+
+@media only screen and (max-width: 600px) {
+    .silkk {margin-top: -30em !important; position: relative;}
+}
 </styles>

@@ -35,7 +35,9 @@
 
 .kream-logo {
     font-size: 1.4rem;
+
 }
+
 
 .carousel {
     max-width: 100%;
@@ -52,9 +54,23 @@
 /////////// RESPONSIVE ////////////////////////////////////////
 @media only screen and (max-width: 600px) {
     .left { padding-top: 2em !important; }
-    .right { padding-top: 4em !important; }
+    .right { padding-top: 2em !important; padding-left: 2em;}
     .form { width: 300px !important; padding-bottom: 24em;}
-    .info { font-size: 4rem !important; }
+    .info { font-size: 2rem !important; margin-left: 0.7em; }
     .kream-logo { font-size: .8rem !important; }
     .carousel { display: none; }
+
+
+
+}
+
+
+////////////// H3 TITLES ////////////////////////////////////
+@media only screen and (max-width: 600px) { 
+    .project-create-title {margin-left: 2em !important;}
+    .project-subtitle {margin-left: 4em !important;}
+    .project-single-subtitle {margin-left: 3em !important;}
+    .project-single-title {margin-left: 1.5em !important;}
+    
+    
 }

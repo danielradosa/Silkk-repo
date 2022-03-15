@@ -1,6 +1,6 @@
 <template>
   <div class="projects">
-    <div class="text-h3 project-single-title">{{ projectId }}</div>
+    <div class="text-h3 project-single-title">{{ projectId }} <q-icon name="edit" size=".5em" right></q-icon></div> 
     <div class="text-h5 project-subtitle">
       Created: <span> {{ deadline }} - {{ author }}</span>
     </div>
@@ -27,7 +27,7 @@ export default {
         });
         console.log(receive)
       },
-    };
+   };
   },
   name: 'singleProject',
 };

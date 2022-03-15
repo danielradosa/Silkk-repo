@@ -1,8 +1,7 @@
 <template>
   <q-bar class="navigation">
     <div class="q-pa-md">
-      <span class="text-h5 kream-logo"><b>Silkk™</b></span>
-      <a href="../layouts/MainLayout.vue"></a>
+      <span  class="text-h5 kream-logo"><q-btn to="../projects" unelevated style="none" size="1em">Silkk™</q-btn></span>      
     </div>
     <div class="q-pa-md">
       <q-btn-dropdown

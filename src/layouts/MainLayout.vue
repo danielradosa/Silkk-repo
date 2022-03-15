@@ -22,7 +22,7 @@
       <h2 class="info">
         Silkk™ is a free project management tool. <br />
         Think Tr*llo, but better. <br />
-        <br />
+   <br class="q-ma-md">
         So what are you waiting for ? <br />
         Try it now & don't forget to tell your friends.
       </h2>

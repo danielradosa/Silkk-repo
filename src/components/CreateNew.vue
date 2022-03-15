@@ -1,7 +1,7 @@
 <template>
   <div class="q-pa-md projects">
     <div class="text-h3 project-create-title">Create a New Project</div>
-    <div class="text-h5 project-subtitle">Fill out form below: <span class="text-red">*</span> All fields are required.</div>
+    <div class="text-h5 project-subtitle">Fill out form below: <br> <span class="text-red">*</span> All fields are required.</div>
   </div>
 
     <q-form @submit="nothing"
