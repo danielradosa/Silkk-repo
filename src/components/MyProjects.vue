@@ -15,6 +15,7 @@
               Damn good project
               <q-icon class="fav-star" name="star" color="yellow" />
             </div>
+          </div>
           </q-img>
 
           <q-card-actions class="project-btns">
