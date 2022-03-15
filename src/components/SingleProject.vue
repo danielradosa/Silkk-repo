@@ -27,20 +27,11 @@ export default {
       console.log(data);
     }
 
-<<<<<<< Updated upstream
-        }).then((res) => {
-          console.log(res)
-        });
-        console.log(receive)
-      },
-   };
-=======
     return {
       projectId,
       state,
       makeGetRequest
     };
->>>>>>> Stashed changes
   },
   name: 'singleProject',
 };
