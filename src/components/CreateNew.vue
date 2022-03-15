@@ -1,5 +1,9 @@
 <template>
-  <div class="q-pa-md projects">
+<div class="q-pa-md projects" v-if="!user">
+    <div class="text-h3 project-create-title">Create a New Project</div>
+  </div>
+
+  <div class="q-pa-md projects" v-else>
     <div class="text-h3 project-create-title">Create a New Project</div>
     <div class="text-h5 project-subtitle">Fill out form below: <br> <span class="text-red">*</span> All fields are required.</div>
   </div>
@@ -30,13 +34,15 @@
         <q-btn label="Create" type="submit" to="/project" class="outline-btn" outline unelevated />
       </div>
     </q-form>
-
 </template>
 <script lang="ts">
  import { ref } from 'vue'
+ import Cookies from 'js-cookie';
+const user = Cookies.get('userEmail');
   export default {
     setup() {
       return {
+        user,
         projectTitle: ref(''),
         projectDescription: ref(''),
         date: ref('2019/02/01')
