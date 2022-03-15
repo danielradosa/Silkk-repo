@@ -1,6 +1,6 @@
 <template>
 <div class="q-pa-md projects" v-if="!user">
-    <div class="text-h3 project-create-title">Create a New Project</div>
+    <div class="text-h3 project-create-title">You can not create new project, unless you log in.</div>
   </div>
 
   <div class="q-pa-md projects" v-else>
