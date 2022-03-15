@@ -51,6 +51,20 @@
     }
 }
 
+
+/////////////////// HOVER ////////////////////////////////
+.star:hover {
+    color: yellow !important;
+}
+.fav-star:hover {
+    color: grey !important;
+}
+.edit:hover {
+    color: black;
+
+}
+
+
 /////////// RESPONSIVE ////////////////////////////////////////
 @media only screen and (max-width: 600px) {
     .left { padding-top: 2em !important; }

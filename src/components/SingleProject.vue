@@ -1,10 +1,10 @@
 <template>
   <div class="projects">
-    <div class="text-h3 project-single-title">{{ projectId }} <q-icon name="edit" size=".5em" right></q-icon></div> 
+    <div class="text-h3 project-single-title">{{ projectId }} <q-icon class="edit" name="edit" size=".5em" right></q-icon></div>
+    <div class="desc-contain"></div> 
     <div class="text-h5 project-subtitle">
       Created: <span> {{}} - {{}}</span>
     </div>
-    <div> {{ description }} </div>
   </div>
 </template>
 
