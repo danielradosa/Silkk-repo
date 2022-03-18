@@ -8,7 +8,9 @@ const userCrud = () => {
     const name = ref('');
     const email = ref('');
     const password = ref('');
-    const user = Cookies.get('userEmail')
+    const user = Cookies.get('userEmail');
+    const login_URL = 'https://sill-api-app.herokuapp.com/api/user/login';
+    const register_URL = 'https://sill-api-app.herokuapp.com/api/user/register';
 
     // SIGNUP ////////////////////////////////////////////////////////////////////////////////
     const signUp = async () => {
@@ -20,7 +22,7 @@ const userCrud = () => {
         ) {
             // Post data
             const send = await axios
-                .post('https://sill-api-app.herokuapp.com/api/user/register', {
+                .post(register_URL, {
                     name: name.value,
                     email: email.value,
                     password: password.value,
@@ -82,7 +84,7 @@ const userCrud = () => {
         ) {
             // Post data
             const send = await axios
-                .post('https://sill-api-app.herokuapp.com/api/user/login', {
+                .post(login_URL, {
                     email: email.value,
                     password: password.value,
                 })
@@ -135,6 +137,7 @@ const userCrud = () => {
     const logOut = () => {
         if (user) {
             $q.loading.show();
+            // Remove Cookie
             Cookies.remove('userEmail');
             setTimeout(() => (window.location.href = '#/login'), 2000);
             setTimeout(() => $q.loading.hide(), 3000);
