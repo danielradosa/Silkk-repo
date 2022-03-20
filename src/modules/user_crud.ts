@@ -9,6 +9,7 @@ const userCrud = () => {
     const email = ref('');
     const password = ref('');
     const user = Cookies.get('userEmail');
+    const userToken = Cookies.get('userToken');
     const login_URL = 'https://sill-api-app.herokuapp.com/api/user/login';
     const register_URL = 'https://sill-api-app.herokuapp.com/api/user/register';
 
@@ -49,7 +50,6 @@ const userCrud = () => {
                         6000
                     );
                     console.log(res);
-                    localStorage.setItem('User: ', name.value);
                 })
                 .catch((error) => {
                     $q.notify({
@@ -74,7 +74,7 @@ const userCrud = () => {
             });
         }
     }
-
+    
     // LOGIN ////////////////////////////////////////////////////////////////////////////////////
     const logIn = async () => {
         // Check if fields are not empty
@@ -105,7 +105,8 @@ const userCrud = () => {
                         4000
                     );
                     console.log(res);
-                    localStorage.setItem('User: ', email.value);
+                    // eslint-disable-next-line
+                    Cookies.set('userToken', `${res.data.data.token}`, { expires: 7, path: '' });
                     Cookies.set('userEmail', `${email.value}`, { expires: 7, path: '' });
                     setTimeout(() => (window.location.reload()), 2000)
                 })
@@ -139,6 +140,7 @@ const userCrud = () => {
             $q.loading.show();
             // Remove Cookie
             Cookies.remove('userEmail');
+            Cookies.remove('userToken');
             setTimeout(() => (window.location.href = '#/login'), 2000);
             setTimeout(() => $q.loading.hide(), 3000);
             setTimeout(
@@ -163,7 +165,8 @@ const userCrud = () => {
         signUp,
         logIn,
         logOut,
-        user
+        user,
+        userToken
     };
 }
 

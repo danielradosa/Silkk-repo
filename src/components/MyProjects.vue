@@ -213,18 +213,81 @@
 </template>
 
 <script lang="ts">
-import { ref } from 'vue';
 import Cookies from 'js-cookie';
+import { reactive, toRefs, ref } from 'vue';
+import moment from 'moment';
+//import axios from 'axios'
+
 const user = Cookies.get('userEmail');
 
-export default {
-  name: 'myProjects',
-
+export default {  
   setup() {
+    const state = reactive({
+      Project: [],
+    });
+
+    const projectTitle = ref(state.Project.toString())
+    
+    var time = moment('2019-11-03T05:00:00.000Z').utc().format('DD.MM.YYYY');
+
+    type Project = {
+      title: string;
+      author: string;
+      description: string;
+      deadline: Date;
+    };
+
+    type GetProjectResponse = {
+      data: Project[];
+    };
+
+    // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
+    const url = 'https://sill-api-app.herokuapp.com/api/project/all/' + `${user}`;
+    console.log(url)
+
+    async function getProject() {
+      try {
+        const response = await fetch(url, {
+          method: 'GET',
+          headers: {
+            Accept: 'application/json',
+          },
+        })
+
+        if (!response.ok) {
+          throw new Error(`Error! status: ${response.status}`);
+        }
+
+        const result = (await response.json()) as GetProjectResponse;
+        console.log(JSON.stringify(result, null, 4));
+        // @ts-expect-error: Unreachable code error
+        state.Project = result
+        return result;
+      } catch (error) {
+        if (error instanceof Error) {
+          console.log('error message: ', error.message);
+          return error.message;
+        } else {
+          console.log('unexpected error: ', error);
+          return 'An unexpected error occurred';
+        }
+      }
+    }
+
+    void getProject();
+
+    console.log();
+
     return {
-      confirm: ref(false),
+      projectTitle,
+      getProject,
+      url,
       user,
+      time,
+      ...toRefs(state),
     };
   },
+
+  name: 'singleProject',
 };
 </script>
