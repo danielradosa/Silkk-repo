@@ -4,7 +4,8 @@
 }
 
 .project-container {
-    margin-left: 12em;
+    left: 13em;
+    position: relative;
     display: inline-grid;
     justify-content: center;
     align-content: center;
@@ -44,10 +45,10 @@
 
 .project-card {
     margin-top: 2em;
-    display: inline-grid;
+    display: flex;
 
     .single-projects {
-        width: 600px;
+        width: 500px;
         background: linear-gradient(90deg, $silver 0%, $white 100%);
 
         .project-btns {
