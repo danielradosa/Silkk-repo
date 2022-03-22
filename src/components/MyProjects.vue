@@ -193,6 +193,7 @@ export default {
           method: 'GET',
           headers: {
             Accept: 'application/json',
+            'auth-token': token as string 
           },
         });
 

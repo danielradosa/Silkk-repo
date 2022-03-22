@@ -29,9 +29,12 @@
 </template>
 
 <script lang="ts">
+import Cookies from 'js-cookie';
 import { reactive, toRefs, ref } from 'vue';
 import moment from 'moment';
 //import axios from 'axios'
+
+const token = Cookies.get('userToken');
 
 export default {
   setup() {
@@ -64,6 +67,7 @@ export default {
           method: 'GET',
           headers: {
             Accept: 'application/json',
+            'auth-token': token as string 
           },
         });
 
@@ -72,7 +76,7 @@ export default {
         }
 
         const result = (await response.json()) as GetProjectResponse;
-        console.log(JSON.stringify(result, null, 4));
+   
         // @ts-expect-error: Unreachable code error
         state.Project = result;
         return result;
