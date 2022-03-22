@@ -155,80 +155,23 @@
 </template>
 
 <script lang="ts">
-import Cookies from 'js-cookie';
-import { reactive, toRefs, ref } from 'vue';
-import moment from 'moment';
-//import axios from 'axios'
-
-const user = Cookies.get('userEmail');
-const token = Cookies.get('userToken');
+import project_crud from 'src/modules/project_crud'
 
 export default {
   setup() {
-    const state = reactive({
-      Project: [],
-    });
+    const projectCrud = project_crud
+    const { Project, projectTitle, urlAll, user, token, getAll } = projectCrud();
 
-    const projectTitle = ref(state.Project.toString());
-
-    var time = moment('2019-11-03T05:00:00.000Z').utc().format('DD.MM.YYYY');
-
-    type Project = {
-      title: string;
-      author: string;
-      description: string;
-      deadline: Date;
-    };
-
-    type GetProjectResponse = {
-      data: Project[];
-    };
-
-     // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
-    const url = 'https://sill-api-app.herokuapp.com/api/project/all/' + `${user}`;
-
-    async function getProject() {
-      try {
-        const response = await fetch(url, {
-          method: 'GET',
-          headers: {
-            Accept: 'application/json',
-            'auth-token': token as string 
-          },
-        });
-
-        if (!response.ok) {
-          throw new Error(`Error! status: ${response.status}`);
-        }
-
-        const result = (await response.json()) as GetProjectResponse;
-        console.log(JSON.stringify(result, null, 4));
-        // @ts-expect-error: Unreachable code error
-        state.Project = result;
-        return result;
-      } catch (error) {
-        if (error instanceof Error) {
-          console.log('error message: ', error.message);
-          return error.message;
-        } else {
-          console.log('unexpected error: ', error);
-          return 'An unexpected error occurred';
-        }
-      }
-    }
-
-    void getProject();
-
-    console.log();
+    void getAll()
 
     return {
+      projectCrud,
       projectTitle,
-      getProject,
-      url,
+      getAll,
+      urlAll,
       user,
-      time,
       token,
-      ...toRefs(state),
+      Project
     };
   },
 

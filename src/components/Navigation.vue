@@ -18,7 +18,7 @@
     <q-space />
     <q-avatar size="36px">
       <img
-        src="https://ih1.redbubble.net/image.2463901569.5288/st,small,507x507-pad,600x600,f8f8f8.jpg"
+        src="https://user-images.githubusercontent.com/30195/34457818-8f7d8c76-ed82-11e7-8474-3825118a776d.png"
       />
     </q-avatar>
     <div class="q-pa-md">
@@ -33,7 +33,7 @@
           <div class="column">
             <q-avatar size="72px">
               <img
-                src="https://ih1.redbubble.net/image.2463901569.5288/st,small,507x507-pad,600x600,f8f8f8.jpg"
+                src="https://user-images.githubusercontent.com/30195/34457818-8f7d8c76-ed82-11e7-8474-3825118a776d.png"
               />
             </q-avatar>
 
