@@ -127,10 +127,6 @@ export default {
     const userCrud = user_crud;
     const { email, password, logIn, isPwd, slide, autoplay, user } = userCrud();
 
-    if (user) {
-      window.location.href = '#/projects';
-    }
-
     return {
       userCrud,
       email,

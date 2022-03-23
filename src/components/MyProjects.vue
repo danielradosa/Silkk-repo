@@ -130,7 +130,7 @@
                   <q-btn
                     flat
                     no-caps
-                    @click="projectDelete"
+                    @click="deleteProject"
                     label="Delete"
                     color="red"
                     class="no-border-radius"
@@ -139,6 +139,7 @@
                 </q-card-actions>
               </q-card>
             </q-dialog>
+
           </q-card-actions>
         </q-card>
       </div>
@@ -156,11 +157,12 @@
 
 <script lang="ts">
 import project_crud from 'src/modules/project_crud'
+import { ref } from 'vue'
 
 export default {
   setup() {
     const projectCrud = project_crud
-    const { Project, projectTitle, urlAll, user, token, getAll } = projectCrud();
+    const { Project, projectTitle, urlAll, user, token, getAll, deleteProject, urlDelete, projID } = projectCrud();
 
     void getAll()
 
@@ -171,7 +173,11 @@ export default {
       urlAll,
       user,
       token,
-      Project
+      Project,
+      deleteProject,
+      urlDelete,
+      projID,
+      confirm: ref(false)
     };
   },
 
