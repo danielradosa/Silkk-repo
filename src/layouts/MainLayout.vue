@@ -163,7 +163,7 @@ export default {
     } = userCrud();
 
     if (user) {
-      window.location.href = '#/projects';
+      window.location.href = '#/login';
     }
 
     return {

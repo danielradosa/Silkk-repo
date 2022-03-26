@@ -160,11 +160,12 @@ import project_crud from 'src/modules/project_crud'
 import { ref } from 'vue'
 
 export default {
+  
   setup() {
     const projectCrud = project_crud
     const { Project, projectTitle, urlAll, user, token, getAll, deleteProject, urlDelete, projID } = projectCrud();
 
-    void getAll()
+    void getAll();
 
     return {
       projectCrud,

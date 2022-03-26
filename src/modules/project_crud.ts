@@ -11,6 +11,7 @@ const projectCrud = () => {
 
   const projID = ref(window.location.hash).value.slice(10) || '/'
   const projectTitle = ref(state.Project.toString());
+  const urlDeleteID = ref(projID).value;
 
   type Project = {
     title: string;
@@ -22,11 +23,11 @@ const projectCrud = () => {
   type GetProjectResponse = {
     data: Project[];
   };
-
+  
   // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
   const urlAll = 'https://sill-api-app.herokuapp.com/api/project/all/' + `${user}`;
   const urlSingle = `https://sill-api-app.herokuapp.com/api/project/${projID}`;
-  const urlDelete = `https://sill-api-app.herokuapp.com/api/project/delete/${projID}`;
+  const urlDelete = `https://sill-api-app.herokuapp.com/api/project/delete/${urlDeleteID}`;
 
   // GET ALL USERS PROJECTS /////////////////////////////////
   async function getAll() {
