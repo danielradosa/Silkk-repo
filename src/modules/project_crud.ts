@@ -11,7 +11,6 @@ const projectCrud = () => {
 
   const projID = ref(window.location.hash).value.slice(10) || '/'
   const projectTitle = ref(state.Project.toString());
-  const urlDeleteID = ref(projID).value;
 
   type Project = {
     title: string;
@@ -27,7 +26,7 @@ const projectCrud = () => {
   // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
   const urlAll = 'https://sill-api-app.herokuapp.com/api/project/all/' + `${user}`;
   const urlSingle = `https://sill-api-app.herokuapp.com/api/project/${projID}`;
-  const urlDelete = `https://sill-api-app.herokuapp.com/api/project/delete/${urlDeleteID}`;
+  const urlDelete = 'https://sill-api-app.herokuapp.com/api/project/delete/';
 
   // GET ALL USERS PROJECTS /////////////////////////////////
   async function getAll() {
@@ -45,7 +44,7 @@ const projectCrud = () => {
       }
 
       const result = (await response.json()) as GetProjectResponse;
-      console.log(JSON.stringify(result, null, 4));
+ 
       // @ts-expect-error: Unreachable code error
       state.Project = result;
       return result;
@@ -92,9 +91,9 @@ const projectCrud = () => {
   }
 
   // DELETE SINGLE USERS PROJECT /////////////////////////////////
-  async function deleteProject() {
+  async function deleteProject(_id: string) {
     try {
-      const response = await fetch(urlDelete, {
+      const response = await fetch(urlDelete + _id, {
         method: 'DELETE',
         headers: {
           Accept: 'application/json',

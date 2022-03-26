@@ -130,7 +130,7 @@
                   <q-btn
                     flat
                     no-caps
-                    @click="deleteProject"
+                    @click="deleteProject(project._id as string)"
                     label="Delete"
                     color="red"
                     class="no-border-radius"
