@@ -97,7 +97,7 @@ const projectCrud = () => {
         method: 'DELETE',
         headers: {
           Accept: 'application/json',
-          'auth-token': token as string
+          'auth-token': token as string,
         }
       });
 
