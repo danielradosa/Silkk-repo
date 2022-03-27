@@ -1,10 +1,13 @@
 import Cookies from 'js-cookie';
 import { reactive, toRefs, ref } from 'vue';
+import { useQuasar } from 'quasar';
 
 const user = Cookies.get('userEmail');
 const token = Cookies.get('userToken');
 
 const projectCrud = () => {
+  const $q = useQuasar();
+
   const state = reactive({
     Project: [],
   });
@@ -22,7 +25,7 @@ const projectCrud = () => {
   type GetProjectResponse = {
     data: Project[];
   };
-  
+
   // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
   const urlAll = 'https://sill-api-app.herokuapp.com/api/project/all/' + `${user}`;
   const urlSingle = `https://sill-api-app.herokuapp.com/api/project/${projID}`;
@@ -44,7 +47,7 @@ const projectCrud = () => {
       }
 
       const result = (await response.json()) as GetProjectResponse;
- 
+
       // @ts-expect-error: Unreachable code error
       state.Project = result;
       return result;
@@ -104,6 +107,10 @@ const projectCrud = () => {
       if (!response.ok) {
         throw new Error(`Error! status: ${response.status}`);
       }
+
+      $q.loading.show();
+      setTimeout(() => (location.reload()), 1000);
+      setTimeout(() => $q.loading.hide(), 2000);
 
       const result = (await response.json()) as GetProjectResponse;
       // @ts-expect-error: Unreachable code error

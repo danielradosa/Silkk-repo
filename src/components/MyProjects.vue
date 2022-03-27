@@ -12,9 +12,9 @@
           >
             <div class="absolute-bottom">
               <div class="text-h6">
-                {{ project.title }} <q-icon class="star" name="star" color="yellow" />
+                {{ project.title as string }} <q-icon class="star" name="star" color="yellow" />
               </div>
-              <div class="text-subtitle2">by {{ project.author }}</div>
+              <div class="text-subtitle2">by {{ project.author as string }}</div>
             </div>
           </q-img>
 
@@ -23,7 +23,7 @@
               unelevated
               size="md"
               class="open-btn no-border-radius dropdown-btn"
-              :to="{ path: '/project/' + `${project._id}` }"
+              :to="{ path: '/project/' + `${project._id as string}` }"
               >Open
             </q-btn>
 
@@ -58,7 +58,7 @@
                   <q-btn
                     flat
                     no-caps
-                    @click="projectDelete"
+                    @click="deleteProject(project._id as any)"
                     label="Delete"
                     color="red"
                     class="no-border-radius"
@@ -84,9 +84,10 @@
           >
             <div class="absolute-bottom">
               <div class="text-h6">
-                {{ project.title }} <q-icon class="star" name="star" color="grey" />
+                {{ project.title }} 
+                <q-icon class="star" name="star" color="grey" />
               </div>
-              <div class="text-subtitle2">by {{ project.author }}</div>
+              <div class="text-subtitle2">by {{ project.author as string }}</div>
             </div>
           </q-img>
 
@@ -95,7 +96,7 @@
               unelevated
               size="md"
               class="open-btn no-border-radius dropdown-btn"
-              :to="{ path: '/project/' + `${project._id}`, params: {id: `${project._id}`} }"
+              :to="{ path: '/project/' + `${project._id as string}`}"
               >Open
             </q-btn>
 
@@ -130,7 +131,7 @@
                   <q-btn
                     flat
                     no-caps
-                    @click="deleteProject(project._id as string)"
+                    @click="deleteProject(project._id as any)"
                     label="Delete"
                     color="red"
                     class="no-border-radius"
