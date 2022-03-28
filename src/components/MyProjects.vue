@@ -84,7 +84,7 @@
           >
             <div class="absolute-bottom">
               <div class="text-h6">
-                {{ project.title }} 
+                {{ project.title as string }} 
                 <q-icon class="star" name="star" color="grey" />
               </div>
               <div class="text-subtitle2">by {{ project.author as string }}</div>
@@ -99,7 +99,6 @@
               :to="{ path: '/project/' + `${project._id as string}`}"
               >Open
             </q-btn>
-
             <q-btn
               flat
               no-caps
@@ -140,7 +139,6 @@
                 </q-card-actions>
               </q-card>
             </q-dialog>
-
           </q-card-actions>
         </q-card>
       </div>

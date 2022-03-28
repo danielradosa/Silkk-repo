@@ -15,6 +15,11 @@ const projectCrud = () => {
   const projID = ref(window.location.hash).value.slice(10) || '/'
   const projectTitle = ref(state.Project.toString());
 
+  const title = ref('');
+  const description = ref('');
+  const deadline = ref('');
+  const authorEmail = ref('');
+
   type Project = {
     title: string;
     author: string;
@@ -30,6 +35,7 @@ const projectCrud = () => {
   const urlAll = 'https://sill-api-app.herokuapp.com/api/project/all/' + `${user}`;
   const urlSingle = `https://sill-api-app.herokuapp.com/api/project/${projID}`;
   const urlDelete = 'https://sill-api-app.herokuapp.com/api/project/delete/';
+  const urlCreate = 'https://sill-api-app.herokuapp.com/api/project/create/';
 
   // GET ALL USERS PROJECTS /////////////////////////////////
   async function getAll() {
@@ -127,6 +133,47 @@ const projectCrud = () => {
     }
   }
 
+  // CREATE NEW PROJECT ////////////////////////////////////////
+  async function createProject() {
+    try {
+      const response = await fetch(urlCreate, {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+          'auth-token': token as string
+        },
+        body: JSON.stringify({
+          title,
+          authorEmail,
+          description,
+          deadline
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error(`Error! status: ${response.status}`);
+      }
+
+      //$q.loading.show();
+      //setTimeout(() => (window.location.href = '#/projects'), 1000);
+      //setTimeout(() => $q.loading.hide(), 2000);
+
+      const result = (await response.json()) as GetProjectResponse;
+      // @ts-expect-error: Unreachable code error
+      state.Project = result;
+      return result;
+    } catch (error) {
+      if (error instanceof Error) {
+        console.log('error message: ', error.message);
+        return error.message;
+      } else {
+        console.log('unexpected error: ', error);
+        return 'An unexpected error occurred';
+      }
+    }
+  }
+
   return {
     projectTitle,
     getAll,
@@ -137,6 +184,8 @@ const projectCrud = () => {
     getSingle,
     urlDelete,
     deleteProject,
+    urlCreate,
+    createProject,
     ...toRefs(state),
     projID
   }
