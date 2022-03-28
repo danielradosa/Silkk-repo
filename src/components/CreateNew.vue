@@ -25,7 +25,7 @@
         filled
         color="black"
         type="text"
-        v-model="title"
+        v-model="projectTitle"
         label="Project Title *"
         lazy-rules
         :rules="['Please type something']"
@@ -34,7 +34,7 @@
       <q-input
         filled
         color="black"
-        v-model="description"
+        v-model="projectDescription"
         autogrow
         label="Project Description"
         class="input"
@@ -42,7 +42,7 @@
       <q-input
         filled
         color="black"
-        v-model="deadline"
+        v-model="projectDate"
         label="Project Deadline *"
         mask="date"
         :rules="['date']"
@@ -56,7 +56,7 @@
               transition-hide="scale"
               class="shadow-24"
             >
-              <q-date v-model="deadline" class="date-info" color="grey">
+              <q-date v-model="projectDate" class="date-info" color="grey">
                 <div class="row items-center justify-end">
                   <q-btn v-close-popup label="Close" color="close-btn" flat />
                 </div>
@@ -88,19 +88,17 @@
 
 <script lang="ts">
 import project_crud from 'src/modules/project_crud'
-import { ref } from 'vue'
 
 export default {
   setup() {
     const projectCrud = project_crud
-    const { createProject, user } = projectCrud();
+    const { createProject, user, projectTitle, projectDescription, projectDate } = projectCrud();
 
     return {
       user,
-      title: ref(''),
-      authorEmail: ref(user),
-      description: ref(''),
-      deadline: ref('2022/01/01'),
+      projectTitle,
+      projectDescription,
+      projectDate,
       createProject
     };
   },

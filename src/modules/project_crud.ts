@@ -12,13 +12,18 @@ const projectCrud = () => {
     Project: [],
   });
 
-  const projID = ref(window.location.hash).value.slice(10) || '/'
-  const projectTitle = ref(state.Project.toString());
+  const projID = ref(window.location.hash).value.slice(10) || '/';
 
-  const title = ref('');
-  const description = ref('');
-  const deadline = ref('');
-  const authorEmail = ref('');
+  const projectTitle = ref('');
+  const projectDescription = ref('');
+  const projectDate = ref('');
+
+  type CreateProjectResponse = {
+    title: string;
+    authorEmail: string;
+    description: string;
+    deadline: string;
+  };
 
   type Project = {
     title: string;
@@ -32,7 +37,7 @@ const projectCrud = () => {
   };
 
   // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
-  const urlAll = 'https://sill-api-app.herokuapp.com/api/project/all/' + `${user}`;
+  const urlAll = `https://sill-api-app.herokuapp.com/api/project/all/${user}`;
   const urlSingle = `https://sill-api-app.herokuapp.com/api/project/${projID}`;
   const urlDelete = 'https://sill-api-app.herokuapp.com/api/project/delete/';
   const urlCreate = 'https://sill-api-app.herokuapp.com/api/project/create/';
@@ -139,15 +144,16 @@ const projectCrud = () => {
       const response = await fetch(urlCreate, {
         method: 'POST',
         headers: {
-          Accept: 'application/json',
           'Content-Type': 'application/json',
+          Accept: 'application/json',
           'auth-token': token as string
         },
         body: JSON.stringify({
-          title,
-          authorEmail,
-          description,
-          deadline
+          title: projectTitle.value,
+          favourite: false,
+          description: projectDescription.value,
+          deadline: projectDate.value,
+          authorEmail: user,
         }),
       });
 
@@ -155,14 +161,13 @@ const projectCrud = () => {
         throw new Error(`Error! status: ${response.status}`);
       }
 
-      //$q.loading.show();
-      //setTimeout(() => (window.location.href = '#/projects'), 1000);
-      //setTimeout(() => $q.loading.hide(), 2000);
+      $q.loading.show();
+      setTimeout(() => (window.location.href = '#/projects'), 2000);
+      setTimeout(() => $q.loading.hide(), 3000);
 
-      const result = (await response.json()) as GetProjectResponse;
-      // @ts-expect-error: Unreachable code error
-      state.Project = result;
+      const result = (await response.json()) as CreateProjectResponse;
       return result;
+
     } catch (error) {
       if (error instanceof Error) {
         console.log('error message: ', error.message);
@@ -176,6 +181,8 @@ const projectCrud = () => {
 
   return {
     projectTitle,
+    projectDescription,
+    projectDate,
     getAll,
     urlAll,
     urlSingle,
