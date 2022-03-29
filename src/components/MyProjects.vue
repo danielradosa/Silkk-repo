@@ -12,7 +12,7 @@
           >
             <div class="absolute-bottom">
               <div class="text-h6">
-                {{ item.title as string }} <q-icon class="star" name="star" color="yellow" />
+                {{ item.title as string }} <q-icon class="star" name="star" color="yellow" @click="removeFromFavourites(item._id as string)" />
               </div>
               <div class="text-subtitle2">by {{ item.authorEmail as string }}</div>
             </div>
@@ -84,8 +84,8 @@
           >
             <div class="absolute-bottom">
               <div class="text-h6">
-                {{ item._id as string }} 
-                <q-icon class="star" name="star" color="grey" @click="addToFavourites" />
+                {{ item.title as string }} 
+                <q-icon class="star" name="star" color="grey" @click="addToFavourites(item._id as string)" />
               </div>
               <div class="text-subtitle2">by {{ item.authorEmail as string }}</div>
             </div>
@@ -132,12 +132,13 @@ export default {
   
   setup() {
     const projectCrud = project_crud
-    const { addToFavourites, Project, projectTitle, urlAll, user, token, getAll, deleteProject, urlDelete, projID } = projectCrud();
+    const { removeFromFavourites, addToFavourites, Project, projectTitle, urlAll, user, token, getAll, deleteProject, urlDelete, projID } = projectCrud();
 
     void getAll();
 
     return {
       addToFavourites,
+      removeFromFavourites,
       projectCrud,
       projectTitle,
       getAll,

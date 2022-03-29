@@ -45,7 +45,8 @@ const projectCrud = () => {
   const urlSingle = `https://sill-api-app.herokuapp.com/api/project/${projID}`;
   const urlDelete = 'https://sill-api-app.herokuapp.com/api/project/delete/';
   const urlCreate = 'https://sill-api-app.herokuapp.com/api/project/create/';
-  const urlFave = `https://sill-api-app.herokuapp.com/api/project/addfavorite/${projID}`;
+  const urlFave = 'https://sill-api-app.herokuapp.com/api/project/addfavorite/';
+  const urlRemoveFave = 'https://sill-api-app.herokuapp.com/api/project/removefavorite/';
 
   // GET ALL USERS PROJECTS /////////////////////////////////
   async function getAll() {
@@ -187,9 +188,9 @@ const projectCrud = () => {
   }
 
   // ADD TO FAVOURITES PROJECT ////////////////////////////////////////
-  async function addToFavourites() {
+  async function addToFavourites(_id: string) {
     try {
-      const response = await fetch(urlFave, {
+      const response = await fetch(urlFave + _id, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -205,7 +206,7 @@ const projectCrud = () => {
         throw new Error(`Error! status: ${response.status}`);
       }
 
-      setTimeout(() => (location.reload()), 1000);
+     location.reload();
       
       const result = (await response.json()) as SetProjectFavourite;
       return result;
@@ -220,7 +221,44 @@ const projectCrud = () => {
     }
   }
 
+  // REMOVE FROM FAVOURITES PROJECT ////////////////////////////////////////
+  async function removeFromFavourites(_id: string) {
+    try {
+      const response = await fetch(urlRemoveFave + _id, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+          'auth-token': token as string
+        },
+        body: JSON.stringify({
+          favourite: true,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error(`Error! status: ${response.status}`);
+      }
+
+      location.reload();
+      
+      const result = (await response.json()) as SetProjectFavourite;
+      return result;
+    } catch (error) {
+      if (error instanceof Error) {
+        console.log('error message: ', error.message);
+        return error.message;
+      } else {
+        console.log('unexpected error: ', error);
+        return 'An unexpected error occurred';
+      }
+    }
+  }
+
+
   return {
+    removeFromFavourites,
+    urlRemoveFave,
     addToFavourites,
     projectTitle,
     projectDescription,
