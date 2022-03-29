@@ -12,35 +12,6 @@ const userCrud = () => {
     const userToken = Cookies.get('userToken');
     const login_URL = 'https://sill-api-app.herokuapp.com/api/user/login';
     const register_URL = 'https://sill-api-app.herokuapp.com/api/user/register';
-    const author_URL = `https://sill-api-app.herokuapp.com/api/user/${user}`;
-
-    type GetAuthorResponse = {
-        author: string;
-    }
-
-    // GET CURRENT USER ///////////////////////////////////////////////////////////////////////
-    async function getAuthor() {
-        try {
-            const response = await fetch(author_URL, {
-                method: 'GET',
-            });
-
-            if (!response.ok) {
-                throw new Error(`Error! status: ${response.status}`);
-            }
-
-            const result = (await response.json()) as GetAuthorResponse;
-            return result;
-        } catch (error) {
-            if (error instanceof Error) {
-                console.log('error message: ', error.message);
-                return error.message;
-            } else {
-                console.log('unexpected error: ', error);
-                return 'An unexpected error occurred';
-            }
-        }
-    }
 
     // SIGNUP ////////////////////////////////////////////////////////////////////////////////
     const signUp = async () => {
@@ -185,7 +156,6 @@ const userCrud = () => {
     }
 
     return {
-        getAuthor,
         slide: ref(1),
         autoplay: ref(true),
         name,

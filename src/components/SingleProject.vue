@@ -22,7 +22,7 @@
     </div>
     <div class="desc-contain"></div>
     <div class="text-h5 project-subtitle">
-      Deadline: <span> {{ Project.deadline }} by {{ Project.authorEmail }} </span> <br />
+      Deadline: <span> {{ Project.deadline }} by {{ Author.name }} </span> <br />
       Description: <span> {{ Project.description }}</span>
     </div>
   </div>
@@ -34,11 +34,14 @@ import project_crud from 'src/modules/project_crud'
 export default {
   setup() {
     const projectCrud = project_crud
-    const { Project, projectTitle, urlSingle, user, token, getSingle } = projectCrud();
+    const { Author, Project, projectTitle, urlSingle, user, token, getSingle, getAuthor } = projectCrud();
 
-    void getSingle()
+    void getSingle();
+    void getAuthor();
 
     return {
+      getAuthor,
+      Author,
       projectCrud,
       projectTitle,
       getSingle,

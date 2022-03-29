@@ -14,7 +14,7 @@
               <div class="text-h6">
                 {{ item.title as string }} <q-icon class="star" name="star" color="yellow" @click="removeFromFavourites(item._id as string)" />
               </div>
-              <div class="text-subtitle2">by {{ item.authorEmail as string }}</div>
+              <div class="text-subtitle2">by {{ Author.name }}</div>
             </div>
           </q-img>
 
@@ -87,7 +87,7 @@
                 {{ item.title as string }} 
                 <q-icon class="star" name="star" color="grey" @click="addToFavourites(item._id as string)" />
               </div>
-              <div class="text-subtitle2">by {{ item.authorEmail as string }}</div>
+              <div class="text-subtitle2">by {{ Author.name }}</div>
             </div>
           </q-img>
 
@@ -132,16 +132,19 @@ export default {
   
   setup() {
     const projectCrud = project_crud
-    const { removeFromFavourites, addToFavourites, Project, projectTitle, urlAll, user, token, getAll, deleteProject, urlDelete, projID } = projectCrud();
+    const { removeFromFavourites, addToFavourites, Project, Author, projectTitle, urlAll, user, token, getAll, deleteProject, urlDelete, projID, getAuthor } = projectCrud();
 
     void getAll();
+    void getAuthor();
 
     return {
+      Author,
       addToFavourites,
       removeFromFavourites,
       projectCrud,
       projectTitle,
       getAll,
+      getAuthor,
       urlAll,
       user,
       token,
