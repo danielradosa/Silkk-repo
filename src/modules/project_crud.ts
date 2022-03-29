@@ -18,6 +18,10 @@ const projectCrud = () => {
   const projectDescription = ref('');
   const projectDate = ref('');
 
+  type SetProjectFavourite = {
+    favourite: boolean;
+  }
+
   type CreateProjectResponse = {
     title: string;
     authorEmail: string;
@@ -203,9 +207,7 @@ const projectCrud = () => {
 
       setTimeout(() => (location.reload()), 1000);
       
-      const result = (await response.json()) as GetProjectResponse;
-      // @ts-expect-error: Unreachable code error
-      state.Project = result;
+      const result = (await response.json()) as SetProjectFavourite;
       return result;
     } catch (error) {
       if (error instanceof Error) {
