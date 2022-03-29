@@ -58,7 +58,7 @@
                   <q-btn
                     flat
                     no-caps
-                    @click="deleteProject(item._id as any)"
+                    @click="deleteProject(item[0]._id as any)"
                     label="Delete"
                     color="red"
                     class="no-border-radius"
@@ -85,7 +85,7 @@
             <div class="absolute-bottom">
               <div class="text-h6">
                 {{ item._id as string }} 
-                <q-icon class="star" name="star" color="grey" />
+                <q-icon class="star" name="star" color="grey" @click="addToFavourites" />
               </div>
               <div class="text-subtitle2">by {{ item.authorEmail as string }}</div>
             </div>
@@ -106,39 +106,9 @@
               size="md"
               class="delete-btn no-border-radius"
               color="red"
-              @click="confirm = true"
+              @click="deleteProject(item._id as any)"
               >Delete</q-btn
             >
-
-            <q-dialog v-model="confirm" persistent class="dialog no-shadow">
-              <q-card>
-                <q-card-section class="row items-center">
-                  <span class="q-ml-sm text-dark"
-                    >Are you sure you want to delete this project?</span
-                  >
-                </q-card-section>
-
-                <q-card-actions align="center">
-                  <q-btn
-                    flat
-                    no-caps
-                    label="Cancel"
-                    color="black"
-                    class="no-border-radius"
-                    v-close-popup
-                  />
-                  <q-btn
-                    flat
-                    no-caps
-                    @click="deleteProject(item._id as any)"
-                    label="Delete"
-                    color="red"
-                    class="no-border-radius"
-                    v-close-popup
-                  />
-                </q-card-actions>
-              </q-card>
-            </q-dialog>
           </q-card-actions>
         </q-card>
       </div>
@@ -162,11 +132,12 @@ export default {
   
   setup() {
     const projectCrud = project_crud
-    const { Project, projectTitle, urlAll, user, token, getAll, deleteProject, urlDelete, projID } = projectCrud();
+    const { addToFavourites, Project, projectTitle, urlAll, user, token, getAll, deleteProject, urlDelete, projID } = projectCrud();
 
     void getAll();
 
     return {
+      addToFavourites,
       projectCrud,
       projectTitle,
       getAll,
