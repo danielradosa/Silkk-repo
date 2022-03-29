@@ -4,17 +4,17 @@
       <div class="text-h3 project-title">Favourite Projects</div>
     </div>
 
-    <div class="project-container" v-for="project in Project" :key="project">
-      <div class="q-pa-md project-card" v-if="project.favourite == true">
+    <div class="project-container" v-for="item in Project" :key="item">
+      <div class="q-pa-md project-card" v-if="item.favourite == true">
         <q-card class="my-card single-projects no-shadow no-border-radius">
           <q-img
             src="https://res.cloudinary.com/practicaldev/image/fetch/s--9yBkqrjS--/c_imagga_scale,f_auto,fl_progressive,h_500,q_auto,w_1000/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/nphrgz8yfnjylrwfr0yl.png"
           >
             <div class="absolute-bottom">
               <div class="text-h6">
-                {{ project.title as string }} <q-icon class="star" name="star" color="yellow" />
+                {{ item.title as string }} <q-icon class="star" name="star" color="yellow" />
               </div>
-              <div class="text-subtitle2">by {{ project.author as string }}</div>
+              <div class="text-subtitle2">by {{ item.author as string }}</div>
             </div>
           </q-img>
 
@@ -23,7 +23,7 @@
               unelevated
               size="md"
               class="open-btn no-border-radius dropdown-btn"
-              :to="{ path: '/project/' + `${project._id as string}` }"
+              :to="{ path: '/project/' + `${item._id as string}` }"
               >Open
             </q-btn>
 
@@ -58,7 +58,7 @@
                   <q-btn
                     flat
                     no-caps
-                    @click="deleteProject(project._id as any)"
+                    @click="deleteProject(item._id as any)"
                     label="Delete"
                     color="red"
                     class="no-border-radius"
@@ -76,18 +76,18 @@
       <div class="text-h3 project-title">All Projects</div>
     </div>
 
-    <div class="project-container" v-for="project in Project" :key="project">
-      <div class="q-pa-md project-card" v-if="project.favourite == false">
+    <div class="project-container" v-for="item in Project" :key="item">
+      <div class="q-pa-md project-card" v-if="item.favourite == false">
         <q-card class="my-card single-projects no-shadow no-border-radius">
           <q-img
             src="https://res.cloudinary.com/practicaldev/image/fetch/s--9yBkqrjS--/c_imagga_scale,f_auto,fl_progressive,h_500,q_auto,w_1000/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/nphrgz8yfnjylrwfr0yl.png"
           >
             <div class="absolute-bottom">
               <div class="text-h6">
-                {{ project.title as string }} 
+                {{ item._id as string }} 
                 <q-icon class="star" name="star" color="grey" />
               </div>
-              <div class="text-subtitle2">by {{ project.author as string }}</div>
+              <div class="text-subtitle2">by {{ item.author as string }}</div>
             </div>
           </q-img>
 
@@ -96,7 +96,7 @@
               unelevated
               size="md"
               class="open-btn no-border-radius dropdown-btn"
-              :to="{ path: '/project/' + `${project._id as string}`}"
+              :to="{ path: '/project/' + `${item._id as string}`}"
               >Open
             </q-btn>
             <q-btn
@@ -130,7 +130,7 @@
                   <q-btn
                     flat
                     no-caps
-                    @click="deleteProject(project._id as any)"
+                    @click="deleteProject(item._id as any)"
                     label="Delete"
                     color="red"
                     class="no-border-radius"

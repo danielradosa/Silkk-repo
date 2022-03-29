@@ -106,6 +106,7 @@ const projectCrud = () => {
 
   // DELETE SINGLE USERS PROJECT /////////////////////////////////
   async function deleteProject(_id: string) {
+
     try {
       const response = await fetch(urlDelete + _id, {
         method: 'DELETE',
@@ -113,6 +114,7 @@ const projectCrud = () => {
           Accept: 'application/json',
           'auth-token': token as string,
         }
+       
       });
 
       if (!response.ok) {
