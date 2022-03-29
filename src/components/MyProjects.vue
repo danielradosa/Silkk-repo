@@ -14,7 +14,7 @@
               <div class="text-h6">
                 {{ item.title as string }} <q-icon class="star" name="star" color="yellow" />
               </div>
-              <div class="text-subtitle2">by {{ item.author as string }}</div>
+              <div class="text-subtitle2">by {{ item.authorEmail as string }}</div>
             </div>
           </q-img>
 
@@ -87,7 +87,7 @@
                 {{ item._id as string }} 
                 <q-icon class="star" name="star" color="grey" />
               </div>
-              <div class="text-subtitle2">by {{ item.author as string }}</div>
+              <div class="text-subtitle2">by {{ item.authorEmail as string }}</div>
             </div>
           </q-img>
 
