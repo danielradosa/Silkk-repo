@@ -64,6 +64,14 @@
 
 }
 
+.delete:hover {
+    color: red;
+}
+
+.todo-row {
+    margin-top: 5em;
+}
+
 
 /////////// RESPONSIVE ////////////////////////////////////////
 @media only screen and (max-width: 600px) {

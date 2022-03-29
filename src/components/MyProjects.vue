@@ -12,7 +12,7 @@
           >
             <div class="absolute-bottom">
               <div class="text-h6">
-                {{ item.title as string }} <q-icon class="star" name="star" color="yellow" @click="removeFromFavourites(item._id as string)" />
+                {{ item.title as string }} <q-icon class="fav-star" name="star" color="yellow" @click="removeFromFavourites(item._id as string)" />
               </div>
               <div class="text-subtitle2">by {{ Author.name }}</div>
             </div>
