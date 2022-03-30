@@ -36,8 +36,7 @@
     <q-scroll-area style="height: 600px;">
       <div v-for="n in 7" :key="n" class="q-py-xs">
      <q-item tag="label" style="max-width: 400px" >
-     <q-separator />
-           
+     <q-separator />          
         <q-item-section class="text-left">
           <q-item-label class="text-bold" >Notifications</q-item-label> <br>
           <q-item-label caption>
@@ -48,11 +47,8 @@
           <q-checkbox v-model="check1" />
           <q-icon class="delete" name="delete" color="grey" />
         </q-item-section>
-
       </q-item>
-  
       </div>
-
     </q-scroll-area>
           <q-toolbar  v-ripple>
    <q-item-section side middle>
