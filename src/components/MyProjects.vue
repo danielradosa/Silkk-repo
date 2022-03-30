@@ -14,7 +14,7 @@
               <div class="text-h6">
                 {{ item.title as string }} <q-icon class="fav-star" name="star" color="yellow" @click="removeFromFavourites(item._id as string)" />
               </div>
-              <div class="text-subtitle2">by {{ Author.name }}</div>
+              <div class="text-subtitle2">by {{ Author.data.name }}</div>
             </div>
           </q-img>
 
@@ -34,39 +34,9 @@
               size="md"
               class="delete-btn no-border-radius"
               color="red"
-              @click="confirm = true"
+              @click="deleteProject(item._id as any)"
               >Delete</q-btn
-            >
-
-            <q-dialog v-model="confirm" persistent class="dialog no-shadow">
-              <q-card>
-                <q-card-section class="row items-center">
-                  <span class="q-ml-sm text-dark"
-                    >Are you sure you want to delete this project?</span
-                  >
-                </q-card-section>
-
-                <q-card-actions align="center">
-                  <q-btn
-                    flat
-                    no-caps
-                    label="Cancel"
-                    color="black"
-                    class="no-border-radius"
-                    v-close-popup
-                  />
-                  <q-btn
-                    flat
-                    no-caps
-                    @click="deleteProject(item[0]._id as any)"
-                    label="Delete"
-                    color="red"
-                    class="no-border-radius"
-                    v-close-popup
-                  />
-                </q-card-actions>
-              </q-card>
-            </q-dialog>
+            >    
           </q-card-actions>
         </q-card>
       </div>
@@ -87,7 +57,7 @@
                 {{ item.title as string }} 
                 <q-icon class="star" name="star" color="grey" @click="addToFavourites(item._id as string)" />
               </div>
-              <div class="text-subtitle2">by {{ Author.name }}</div>
+              <div class="text-subtitle2">by {{ Author.data.name }}</div>
             </div>
           </q-img>
 

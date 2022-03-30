@@ -22,7 +22,7 @@
     </div>
     <div class="desc-contain"></div>
     <div class="text-h5 project-subtitle">
-      Deadline: <span> {{ Project.deadline }} by {{ Author.name }} </span> <br />
+      Deadline: <span> {{ Project.deadline }} by {{ Author.data.name }} </span> <br />
       Description: <span> {{ Project.description }}</span>
     </div>
   </div>

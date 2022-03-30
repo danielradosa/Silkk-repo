@@ -133,10 +133,10 @@ const projectCrud = () => {
       }
 
       const result = (await response.json()) as GetProjectResponse;
-
       // @ts-expect-error: Unreachable code error
       state.Project = result;
       return result;
+      
     } catch (error) {
       if (error instanceof Error) {
         console.log('error message: ', error.message);
@@ -199,7 +199,7 @@ const projectCrud = () => {
           favourite: false,
           description: projectDescription.value,
           deadline: projectDate.value,
-          authorEmail: user,
+          authorEmail: user
         }),
       });
 
@@ -207,11 +207,11 @@ const projectCrud = () => {
         throw new Error(`Error! status: ${response.status}`);
       }
 
-      $q.loading.show();
-      setTimeout(() => (window.location.href = '#/projects'), 1500);
-      setTimeout(() => $q.loading.hide(), 2500);
+      
 
       const result = (await response.json()) as CreateProjectResponse;
+
+      window.location.href = '#/projects';
       return result;
 
     } catch (error) {
