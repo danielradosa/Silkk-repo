@@ -21,37 +21,24 @@
   </div>
 
   <!-- ////////////// TO-DO /////////////////// -->
-  <div class="row todo-row">
-    <div style="max-width: 400px">
-      <q-toolbar-title class="text-center">Test</q-toolbar-title>
-      <div>
-        <q-scroll-area style="height: 600px">
-          <div v-for="n in 7" :key="n" class="q-py-xs">
-            <q-item tag="label" style="max-width: 400px">
-              <q-separator />
-              <q-item-section class="text-left">
-                <q-item-label class="text-bold">Notifications</q-item-label>
-                <br />
-                <q-item-label caption>
-                  Notify me about updates to apps or games that I downloaded
-                </q-item-label>
-              </q-item-section>
-              <q-item-section side middle>
-                <q-checkbox v-model="check1" />
-                <q-icon class="delete" name="delete" color="grey" />
-              </q-item-section>
-            </q-item>
-          </div>
-        </q-scroll-area>
-        <q-toolbar v-ripple>
-          <q-item-section side middle>
-            <q-icon class="add" name="add" color="grey" />
-          </q-item-section>
-        </q-toolbar>
-      </div>
-    </div>
-    <div>First column</div>
-    <div>First column</div>
+<div class="todo">
+ <div class="container">
+		<h2>Title</h2>
+	
+
+		<h3>Todo</h3>
+		<ul id="incomplete-tasks">
+			<li><input type="checkbox"><label>Test1</label><input type="text"><button class="edit">Edit</button><button class="delete">Delete</button></li>
+			<li><input type="checkbox"><label>Test2</label><input type="text" value="Go Shopping"><button class="edit">Edit</button><button class="delete">Delete</button></li>
+      <li><input type="checkbox"><label>Test3</label><input type="text" value="Go Shopping"><button class="edit">Edit</button><button class="delete">Delete</button></li>
+		</ul>
+
+		<h3>Completed</h3>
+		<ul id="completed-tasks">
+			<li><input type="checkbox" checked><label>Test4r</label><input type="text"><button class="edit">Edit</button><button class="delete">Delete</button></li>
+		</ul>
+	</div>
+  
   </div>
 </template>
 
