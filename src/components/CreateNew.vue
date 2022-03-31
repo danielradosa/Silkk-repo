@@ -69,7 +69,7 @@
         <q-btn
           label="Back"
           type="submit"
-          to="/projects"
+          onclick="history.back()"
           class="dropdown-btn back-btn"
           unelevated
         />

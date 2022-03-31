@@ -27,6 +27,10 @@ const projectCrud = () => {
     data: Author[];
   }
 
+  type UpdateProjectTitle = {
+    title: string;
+  }
+
   type SetProjectFavourite = {
     favourite: boolean;
   }
@@ -57,6 +61,7 @@ const projectCrud = () => {
   const urlCreate = 'https://sill-api-app.herokuapp.com/api/project/create/';
   const urlFave = 'https://sill-api-app.herokuapp.com/api/project/addfavorite/';
   const urlRemoveFave = 'https://sill-api-app.herokuapp.com/api/project/removefavorite/';
+  const urlUpdateTitle = 'https://sill-api-app.herokuapp.com/api/project/updatetitle/';
   // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
   const author_URL = `https://sill-api-app.herokuapp.com/api/user/${user}`;
 
@@ -199,7 +204,7 @@ const projectCrud = () => {
           favourite: false,
           description: projectDescription.value,
           deadline: projectDate.value,
-          authorEmail: user
+          authorEmail: user,
         }),
       });
 
@@ -207,11 +212,7 @@ const projectCrud = () => {
         throw new Error(`Error! status: ${response.status}`);
       }
 
-      
-
       const result = (await response.json()) as CreateProjectResponse;
-
-      window.location.href = '#/projects';
       return result;
 
     } catch (error) {
@@ -293,8 +294,41 @@ const projectCrud = () => {
     }
   }
 
+  // UPDATE PROJECT TITLE ////////////////////////////////////////
+  async function updateProjectTitle(_id: string, projectTitle: string) {
+    try {
+      const response = await fetch(urlUpdateTitle + _id, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+          'auth-token': token as string
+        },
+        body: JSON.stringify({
+          title: projectTitle
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error(`Error! status: ${response.status}`);
+      }
+
+      const result = (await response.json()) as UpdateProjectTitle;
+      return result;
+    } catch (error) {
+      if (error instanceof Error) {
+        console.log('error message: ', error.message);
+        return error.message;
+      } else {
+        console.log('unexpected error: ', error);
+        return 'An unexpected error occurred';
+      }
+    }
+  }
 
   return {
+    updateProjectTitle,
+    urlUpdateTitle,
     getAuthor,
     removeFromFavourites,
     urlRemoveFave,
