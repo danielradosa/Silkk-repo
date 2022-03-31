@@ -11,7 +11,7 @@
         />
       </q-popup-edit>
       <q-icon class="edit" name="edit" size=".5em" right></q-icon>
-      <q-icon class="save" name="save" size=".5em" right @click="updateProjectTitle(Project._id, projectTitle = Project.title)"></q-icon>
+       <q-icon class="save" name="save" size=".5em" right @click="updateProjectTitle(Project._id, projectTitle = Project.title)"></q-icon>
     </div>
     <div class="text-h5 project-subtitle">
       Deadline: <span> {{ Project.deadline }} by {{ Author.data.name }} </span>
