@@ -28,7 +28,7 @@
         v-model="projectTitle"
         label="Project Title *"
         lazy-rules
-        :rules="['Please type something']"
+        :rules="[ val => val.length >= 3 || 'Please use minimum 3 characters']"
         class="input"
       />
       <q-input
@@ -36,6 +36,8 @@
         color="black"
         v-model="projectDescription"
         autogrow
+        lazy-rules
+        :rules="[ val => val.length >= 10 || 'Please use minimum 10 characters']"
         label="Project Description"
         class="input"
       />
@@ -45,6 +47,7 @@
         v-model="projectDate"
         label="Project Deadline *"
         mask="date"
+        fill-mask=""
         :rules="['date']"
         class="input"
       >
