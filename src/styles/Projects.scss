@@ -70,6 +70,8 @@
 .star, .fav-star {
     transition: .3s ease-in-out;
     cursor: pointer;
+    font-size: 1.2em;
+    margin: .3em;
 }
 
 .star:hover {

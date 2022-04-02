@@ -117,7 +117,7 @@
       navigation
       padding
       arrows
-      height="663px"
+      height="695px"
       class="bg-crsl text-white"
       @mouseenter="autoplay = false"
       @mouseleave="autoplay = true"
@@ -161,10 +161,6 @@ export default {
       user,
       signUp,
     } = userCrud();
-
-    if (user) {
-      window.location.href = '#/login';
-    }
 
     return {
       name,

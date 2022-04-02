@@ -35,15 +35,14 @@
 
 .kream-logo {
     font-size: 1.4rem;
-
 }
-
 
 .carousel {
     max-width: 100%;
     max-height: fit-content;
     bottom: 0;
     width: 100%;
+    position: fixed;
 
     .bg-crsl {
         background-color: $blue;
@@ -59,9 +58,6 @@
     .info { font-size: 2rem !important; margin-left: 0.7em; }
     .kream-logo { font-size: .8rem !important; }
     .carousel { display: none; }
-
-
-
 }
 
 
@@ -71,6 +67,4 @@
     .project-subtitle {margin-left: 4em !important;}
     .project-single-subtitle {margin-left: 3em !important;}
     .project-single-title {margin-left: 1.5em !important;}
-    
-    
 }

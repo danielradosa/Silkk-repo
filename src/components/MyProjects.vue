@@ -8,7 +8,7 @@
       <div class="q-pa-md project-card" v-if="item.favourite == true">
         <q-card class="my-card single-projects no-shadow no-border-radius">
           <q-img
-            src="https://res.cloudinary.com/practicaldev/image/fetch/s--9yBkqrjS--/c_imagga_scale,f_auto,fl_progressive,h_500,q_auto,w_1000/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/nphrgz8yfnjylrwfr0yl.png"
+            src="https://media.istockphoto.com/photos/technology-network-picture-id1037573870?b=1&k=20&m=1037573870&s=612x612&w=0&h=QZ8vJf1TxY5GWeIRS7ZUj9jg2GOTGOjp4RZo_chEoD4="
           >
             <div class="absolute-bottom">
               <div class="text-h6">
@@ -50,7 +50,7 @@
       <div class="q-pa-md project-card" v-if="item.favourite == false">
         <q-card class="my-card single-projects no-shadow no-border-radius">
           <q-img
-            src="https://res.cloudinary.com/practicaldev/image/fetch/s--9yBkqrjS--/c_imagga_scale,f_auto,fl_progressive,h_500,q_auto,w_1000/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/nphrgz8yfnjylrwfr0yl.png"
+            src="https://media.istockphoto.com/photos/technology-network-picture-id1037573870?b=1&k=20&m=1037573870&s=612x612&w=0&h=QZ8vJf1TxY5GWeIRS7ZUj9jg2GOTGOjp4RZo_chEoD4="
           >
             <div class="absolute-bottom">
               <div class="text-h6">
