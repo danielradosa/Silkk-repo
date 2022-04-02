@@ -16,6 +16,7 @@
     </div>
 
     <q-form
+      @submit.prevent="createProject"
       class="q-gutter-md create-form"
       autocorrect="on"
       autocapitalize="off"
@@ -79,7 +80,6 @@
         <q-btn
           label="Create"
           type="submit"
-          @click="createProject"
           class="outline-btn"
           outline
           unelevated

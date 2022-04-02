@@ -141,7 +141,7 @@ const projectCrud = () => {
       // @ts-expect-error: Unreachable code error
       state.Project = result;
       return result;
-      
+
     } catch (error) {
       if (error instanceof Error) {
         console.log('error message: ', error.message);
@@ -194,11 +194,6 @@ const projectCrud = () => {
     try {
       const response = await fetch(urlCreate, {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Accept: 'application/json',
-          'auth-token': token as string
-        },
         body: JSON.stringify({
           title: projectTitle.value,
           favourite: false,
@@ -206,6 +201,11 @@ const projectCrud = () => {
           deadline: projectDate.value,
           authorEmail: user,
         }),
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+          'auth-token': token as string
+        }
       });
 
       if (!response.ok) {
@@ -213,6 +213,9 @@ const projectCrud = () => {
       }
 
       const result = (await response.json()) as CreateProjectResponse;
+
+      window.location.href ='#/projects';
+
       return result;
 
     } catch (error) {
