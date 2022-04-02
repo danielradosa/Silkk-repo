@@ -4,6 +4,8 @@ node_modules
 
 # Quasar core related directories
 .quasar
+.yarn.lock
+package-lock.json
 /dist
 
 # Cordova related directories and files
