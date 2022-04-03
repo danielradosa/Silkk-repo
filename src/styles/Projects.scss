@@ -50,12 +50,18 @@
     .single-projects {
         width: 500px;
         background: linear-gradient(90deg, $silver 0%, $white 100%);
+        border-radius: 3px !important;
 
         .project-btns {
             display: flex;
             text-align: center;
             justify-content: center;
             width: 100%;
+
+            .open-btn {
+                color: $blue;
+                border-bottom: 1px solid $blue;
+            }
             .open-btn, .delete-btn {
                 flex-grow: 1;
             }
@@ -97,7 +103,13 @@
 }
 
 @media only screen and (max-width: 600px) {
-    .project-container { margin-left: 1em; }
+    .project-container { margin-left: 1em !important; }
     .projects { .project-title { margin-left: 0.8em; } }
     .single-projects { width: 300px !important; }
+}
+
+@media only screen and (max-width: 500px) {
+    .project-container {   }
+    .projects { .project-title { margin-left: 0.8em;  } }
+    .single-projects { width: 300px !important; margin-left: -9em !important;}
 }
