@@ -1,3 +1,5 @@
+/*
+
 import { reactive, ref, toRefs } from 'vue'
 import Cookies from 'js-cookie'
 
@@ -33,3 +35,6 @@ const notesCrud = () => {
 }
 
 export default notesCrud;
+
+
+*/
