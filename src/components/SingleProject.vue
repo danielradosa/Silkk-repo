@@ -11,19 +11,50 @@
         />
       </q-popup-edit>
       <q-icon class="edit" name="edit" size=".5em" right></q-icon>
-       <q-icon class="save" name="save" size=".5em" right @click="updateProjectTitle(Project._id, projectTitle = Project.title)"></q-icon>
+      <q-icon
+        class="save"
+        name="save"
+        size=".5em"
+        right
+        @click="updateProjectTitle(Project._id, (projectTitle = Project.title))"
+      ></q-icon>
     </div>
     <div class="text-h5 project-subtitle">
       Deadline: <span> {{ Project.deadline }} by {{ Author.data.name }} </span>
       <br />
       Description: <span> {{ Project.description }}</span>
     </div>
+
+    <q-btn label="Create new list" class="add-btn" flat @click="prompt = true" />
+    <q-dialog v-model="prompt" persistent>
+      <q-card style="min-width: 350px">
+        <q-card-section>
+          <div class="list-title">List title</div>
+        </q-card-section>
+
+        <q-card-section class="q-pt-none">
+          <q-input
+            dense
+            color="grey"
+            v-model="listTitle"
+            autofocus
+            @keyup.enter="prompt = false"
+          />
+        </q-card-section>
+
+        <q-card-actions align="right" class="text-primary">
+          <q-btn flat label="Cancel"  class="prompt-btn" color="red" v-close-popup />
+          <q-btn flat label="Add list" class="prompt-btn" color="black" v-close-popup />
+        </q-card-actions>
+      </q-card>
+    </q-dialog>
   </div>
 </template>
 
 <script lang="ts">
 import project_crud from 'src/modules/project_crud';
-
+import { ref } from 'vue';
+ 
 export default {
   setup() {
     const projectCrud = project_crud;
@@ -43,6 +74,8 @@ export default {
     void getAuthor();
 
     return {
+      prompt: ref(false),
+      address: ref(''),
       updateProjectTitle,
       getAuthor,
       Author,
