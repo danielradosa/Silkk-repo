@@ -30,9 +30,7 @@
 			<li><input type="checkbox"><label>Test1</label><input type="text"><button class="edit">Edit</button><button class="delete">Delete</button></li>
 			<li><input type="checkbox"><label>Test2</label><input type="text"><button class="edit">Edit</button><button class="delete">Delete</button></li>
       <li><input type="checkbox"><label>Test3</label><input type="text"><button class="edit">Edit</button><button class="delete">Delete</button></li>
-      <li><input type="checkbox"><label>Test4</label><input type="text"><button class="edit">Edit</button><button class="delete">Delete</button></li>
-      
-      
+      <li><input type="checkbox"><label>Test4</label><input type="text"><button class="edit">Edit</button><button class="delete">Delete</button></li>  
 		</ul>
 
 		<h3>Completed</h3>

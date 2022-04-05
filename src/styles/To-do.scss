@@ -1,25 +1,36 @@
-.todo {
+.flex-gap {
     margin-top: 5em;
     display: flex;
+    flex-wrap: wrap;
 }
 
 .container {
 	display: block;
-	width: 30em;
+    overflow: auto;
+	width: 32em;
 	margin-left: 10em;
 	background-color:rgba(194, 193, 193, 0.712);
-	padding:0px 10px 10px 10px;
+	padding:0em 1em 1em 1em;
+}
+
+.todo-title {
+    display: block;
 }
 
 h2 {
 	text-align:center;
-	padding-top:10px;
-	margin-bottom:0px;
+	padding-top:1em;
+	margin-bottom:0em;
+}
+
+#incomplete-tasks {
+    height: 20em;
 }
 
 ul {
 	margin: 0;
 	padding: 0;
+    overflow: auto;
 }
 
 li * {
@@ -49,7 +60,7 @@ button {
 }
 
 button:hover {
-	color: #333;
+	color: black;
 }
 
 
@@ -57,7 +68,7 @@ button:hover {
 
 h3,
 label[for='new-task'] {
-	color: #333;
+	color: black;
 	font-weight: 700;
 	font-size: 15px;
 	border-bottom: 2px solid #333;
