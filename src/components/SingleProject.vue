@@ -66,6 +66,26 @@
       </q-card>
     </q-dialog>
   </div>
+
+  <!-- ////////////// TO-DO /////////////////// -->
+<div class="flex-gap">
+ <div class="container">
+  
+		<h2>Title</h2> <div class="todo-title">
+		<h3>Todo</h3><i class="fa fa-plus"></i></div>
+		<ul id="incomplete-tasks">
+			<li><input type="checkbox"><label>Test1</label><input type="text"><button class="edit">Edit</button><button class="delete">Delete</button></li>
+			<li><input type="checkbox"><label>Test2</label><input type="text"><button class="edit">Edit</button><button class="delete">Delete</button></li>
+      <li><input type="checkbox"><label>Test3</label><input type="text"><button class="edit">Edit</button><button class="delete">Delete</button></li>
+      <li><input type="checkbox"><label>Test4</label><input type="text"><button class="edit">Edit</button><button class="delete">Delete</button></li>  
+		</ul>
+
+		<h3>Completed</h3>
+		<ul id="completed-tasks">
+			<li><input type="checkbox" checked><label>Test4r</label><input type="text"><button class="edit">Edit</button><button class="delete">Delete</button></li>
+		</ul>
+	</div>
+  </div>
 </template>
 
 <script lang="ts">
