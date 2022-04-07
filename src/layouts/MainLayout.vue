@@ -117,7 +117,7 @@
       navigation
       padding
       arrows
-      height="370px"
+      height="450px"
       class="bg-crsl text-white"
       @mouseenter="autoplay = false"
       @mouseleave="autoplay = true"

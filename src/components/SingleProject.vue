@@ -2,27 +2,24 @@
   <div class="projects">
     <div class="text-h3 project-single-title">
       {{ Project.title }}
-      <q-popup-edit v-model="Project.title" auto-save v-slot="scope">
-        <q-input
-          v-model="scope.value"
-          autofocus
-          counter
-          @keyup.enter="scope.set"
-        />
-      </q-popup-edit>
-      <q-icon class="edit" name="edit" size=".5em" right></q-icon>
     </div>
+
     <div class="text-h5 project-subtitle">
       Deadline: <span> {{ Project.deadline }} by {{ Author.data.name }} </span>
       <br />
       Description: <span> {{ Project.description }}</span>
     </div>
 
-    <q-btn label="Create new list" class="add-btn" flat @click="prompt = true" />
-    <q-dialog v-model="prompt" persistent>
+    <q-btn
+      label="Create new list"
+      class="add-btn"
+      flat
+      @click="prompt = true"
+    />
+    <q-dialog v-model="prompt">
       <q-card style="min-width: 350px">
         <q-card-section>
-          <div class="list-title">List title</div>
+          <div class="list-title">title</div>
         </q-card-section>
 
         <q-card-section class="q-pt-none">
@@ -36,17 +33,34 @@
         </q-card-section>
 
         <q-card-actions align="right" class="text-primary">
-          <q-btn flat label="Cancel"  class="prompt-btn" color="red" v-close-popup />
-          <q-btn flat label="Add list" class="prompt-btn" color="black" v-close-popup />
+          <q-btn
+            flat
+            label="Cancel"
+            class="prompt-btn"
+            color="red"
+            v-close-popup
+          />
+          <q-btn
+            flat
+            label="Create"
+            class="prompt-btn"
+            color="black"
+            v-close-popup
+          />
         </q-card-actions>
       </q-card>
     </q-dialog>
 
-    <q-btn label="Create new note" class="add-btn" flat @click="prompt = true" />
-    <q-dialog v-model="prompt" persistent>
+    <q-btn
+      label="Create new note"
+      class="add-btn"
+      flat
+      @click="prompt = true"
+    />
+    <q-dialog v-model="prompt">
       <q-card style="min-width: 350px">
         <q-card-section>
-          <div class="list-title">Note title</div>
+          <div class="list-title">title</div>
         </q-card-section>
 
         <q-card-section class="q-pt-none">
@@ -60,40 +74,48 @@
         </q-card-section>
 
         <q-card-actions align="right" class="text-primary">
-          <q-btn flat label="Cancel"  class="prompt-btn" color="red" v-close-popup />
-          <q-btn flat label="Add list" class="prompt-btn" color="black" v-close-popup />
+          <q-btn
+            flat
+            label="Cancel"
+            class="prompt-btn"
+            color="red"
+            v-close-popup
+          />
+          <q-btn
+            flat
+            label="Create"
+            class="prompt-btn"
+            color="black"
+            v-close-popup
+          />
         </q-card-actions>
       </q-card>
     </q-dialog>
   </div>
 
   <!-- ////////////// TO-DO /////////////////// -->
-<div class="flex-gap">
- <div class="container">
-  
-		<h2>Title</h2> <div class="todo-title">
-		<h3>Todo</h3><i class="fa fa-plus"></i></div>
-		<ul id="incomplete-tasks">
-			<li><input type="checkbox"><label>Test1</label><input type="text"><button class="edit">Edit</button><button class="delete">Delete</button></li>
-			<li><input type="checkbox"><label>Test2</label><input type="text"><button class="edit">Edit</button><button class="delete">Delete</button></li>
-      <li><input type="checkbox"><label>Test3</label><input type="text"><button class="edit">Edit</button><button class="delete">Delete</button></li>
-      <li><input type="checkbox"><label>Test4</label><input type="text"><button class="edit">Edit</button><button class="delete">Delete</button></li>  
-		</ul>
-
-		<h3>Completed</h3>
-		<ul id="completed-tasks">
-			<li><input type="checkbox" checked><label>Test4r</label><input type="text"><button class="edit">Edit</button><button class="delete">Delete</button></li>
-		</ul>
-	</div>
-  </div>
+  <q-list class="todo-list">
+    <div class="text-h5 todo-title">Todo List</div>
+    <q-item v-ripple v-for="item in Todos" :key="item" class="todo-item">
+      <q-item-section avatar>
+        <q-checkbox v-model="item.status" color="black"></q-checkbox>
+      </q-item-section>
+      <q-item-section>
+        <q-item-label class="todo-task">{{ item.taskTitle }}</q-item-label>
+      </q-item-section>
+    </q-item>
+  </q-list>
 </template>
 
 <script lang="ts">
 import project_crud from 'src/modules/project_crud';
+import todo_crud from 'src/modules/todo_crud';
 import { ref, reactive } from 'vue';
- 
+
 export default {
   setup() {
+    const todoCrud = todo_crud;
+    const { Todos, getTodos } = todoCrud();
     const projectCrud = project_crud;
     const {
       Author,
@@ -105,19 +127,21 @@ export default {
       getSingle,
       getAuthor,
       updateProjectTitle,
-      projID
+      projID,
     } = projectCrud();
 
     void getSingle();
     void getAuthor();
+    void getTodos();
 
     const state = reactive({
       projectTitle,
-    })
-    
-    void updateProjectTitle(projID, state.projectTitle);
+    });
 
     return {
+      getTodos,
+      Todos,
+      todoCrud,
       projID,
       state,
       prompt: ref(false),
