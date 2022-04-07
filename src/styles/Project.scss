@@ -22,3 +22,49 @@ a {
     color: $blue;
     background-color: $off-white;
 }
+
+.add-btn:first-of-type {
+    color: $off-white;
+    background-image: linear-gradient(to left, $blue, $light-blue);
+    letter-spacing: .2em;
+    margin-left: 20.5em !important;
+    margin-top: 2em;
+    font-weight: 600;
+    font-size: 1em;
+    font-family: $secondaryFont !important;
+    transition: .3s ease-in-out;
+    padding-left: 1.6em;
+    padding-right: 1.6em;
+    padding-top: 1em;
+    padding-bottom: 1em;
+}
+
+.add-btn {
+    color: $black;
+    background-image: linear-gradient(to right, $yellow, $dark-yellow);
+    letter-spacing: .2em;
+    margin-left: 1em !important;
+    margin-top: 2em;
+    font-weight: 600;
+    font-size: 1em;
+    font-family: $secondaryFont !important;
+    transition: .3s ease-in-out;
+    padding-left: 1.6em;
+    padding-right: 1.6em;
+    padding-top: 1em;
+    padding-bottom: 1em;
+}
+
+.list-title {
+    color: $blue;
+    font-weight: bold;
+    font-size: 1.2em;
+    font-family: $secondaryFont;
+    text-transform: uppercase;
+}
+
+.prompt-btn {
+    font-family: $secondaryFont !important;
+    font-size: .9em;
+    font-weight: bold;
+}
