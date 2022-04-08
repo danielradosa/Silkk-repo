@@ -1,26 +1,45 @@
 .todo-list {
 	width: 300px;
 	margin-top: 6em;
-	left: 290px;
 	position: fixed;
+	left: 290px;
 	background-color: $off-white;
 	border-radius: 5px;
 	box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
 	color: $blue;
 
-	.todo-item {
-		border-bottom: 1px solid $blue;
+	.input-task {
 		padding: 1em;
-		width: 300px;
+		color: $blue;
+	}
+
+	.todo-item {
+		padding: 1em;
+	}
+
+	.done {
+		.q-item__label {
+			text-decoration: line-through;
+			color: #bbb;
+		}
+		.q-checkbox__bg {
+			background-color: #bbb;
+			border: 2px solid #bbb;
+		}
+		background-color: $off-white;
+	}
+
+	.q-checkbox__bg {
+		background-color: $off-white;
+		border: 2px solid $blue;
 	}
 
 	.todo-title {
 		text-align: center;
 		font-size: 1.3em;
 		text-transform: uppercase;
-		color: $blue;
-		background-color: $silver;
 		padding: 1em;
 		border-radius: 5px;
+		font-weight: bold;
 	}
 }

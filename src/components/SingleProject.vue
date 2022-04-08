@@ -94,14 +94,51 @@
   </div>
 
   <!-- ////////////// TO-DO /////////////////// -->
-  <q-list class="todo-list">
+  <q-list class="todo-list" separator>
     <div class="text-h5 todo-title">Todo List</div>
-    <q-item v-ripple v-for="item in Todos" :key="item" class="todo-item">
-      <q-item-section avatar>
-        <q-checkbox v-model="item.status" color="black"></q-checkbox>
+    <q-input
+      v-model="newTask"
+      class="input-task"
+      placeholder="Add task"
+      dense
+      @keyup.enter="createTodo"
+    >
+      <template v-slot:append>
+        <q-btn round dense flat icon="add" @click="createTodo" />
+      </template>
+    </q-input>
+    <q-item
+      v-ripple
+      v-for="(item, index) in Todos"
+      :key="item"
+      :class="{ 'done bg-grey-3': item.status == true }"
+      class="todo-item"
+    >
+      <q-item-section avatar v-if="item.status == false">
+        <q-checkbox
+          v-model="item.status"
+          @click="completeTodo(item._id as string)"
+        ></q-checkbox>
+      </q-item-section>
+      <q-item-section avatar v-else-if="item.status == true">
+        <q-checkbox
+          v-model="item.status"
+          @click="uncompleteTodo(item._id as string)"
+          color="black"
+        ></q-checkbox>
       </q-item-section>
       <q-item-section>
         <q-item-label class="todo-task">{{ item.taskTitle }}</q-item-label>
+      </q-item-section>
+      <q-item-section v-if="item.status == true" side>
+        <q-btn
+          flat
+          dense
+          round
+          color="grey"
+          icon="delete"
+          @click.stop="deleteTodo(item._id as string, index)"
+        ></q-btn>
       </q-item-section>
     </q-item>
   </q-list>
@@ -110,12 +147,20 @@
 <script lang="ts">
 import project_crud from 'src/modules/project_crud';
 import todo_crud from 'src/modules/todo_crud';
-import { ref, reactive } from 'vue';
+import { ref } from 'vue';
 
 export default {
   setup() {
     const todoCrud = todo_crud;
-    const { Todos, getTodos } = todoCrud();
+    const {
+      Todos,
+      getTodos,
+      completeTodo,
+      uncompleteTodo,
+      deleteTodo,
+      createTodo,
+      newTask
+    } = todoCrud();
     const projectCrud = project_crud;
     const {
       Author,
@@ -134,16 +179,16 @@ export default {
     void getAuthor();
     void getTodos();
 
-    const state = reactive({
-      projectTitle,
-    });
-
     return {
+      newTask,
+      createTodo,
+      deleteTodo,
+      uncompleteTodo,
+      completeTodo,
       getTodos,
       Todos,
       todoCrud,
       projID,
-      state,
       prompt: ref(false),
       address: ref(''),
       updateProjectTitle,
