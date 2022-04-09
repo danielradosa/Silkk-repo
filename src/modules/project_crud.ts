@@ -13,6 +13,7 @@ const projectCrud = () => {
     Author: []
   });
 
+  // Current project ID
   const projID = ref(window.location.hash).value.slice(10) || '/';
 
   const projectTitle = ref('');

@@ -1,8 +1,7 @@
 .todo-list {
 	width: 300px;
 	margin-top: 6em;
-	position: fixed;
-	left: 290px;
+	height: auto;
 	background-color: $off-white;
 	border-radius: 5px;
 	box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
@@ -41,5 +40,27 @@
 		padding: 1em;
 		border-radius: 5px;
 		font-weight: bold;
+	}
+}
+
+.stuff {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	width: 70%;
+}
+
+.note {
+	margin-top: 6em;
+	background-color: $off-white;
+	border-radius: 5px;
+	height: auto;
+	box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+	color: $blue;
+	
+	.note-content {
+		margin-top: 1em;
+		max-width: 400px;
 	}
 }

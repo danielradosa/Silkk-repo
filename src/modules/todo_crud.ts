@@ -93,7 +93,7 @@ const todoCrud = () => {
         }
         const result = (await response.json()) as CreateTodoResponse;
         // @ts-expect-error: Unreachable code error
-        state.Todos = result;
+        state.Todos.push(result);
         
         return result;
 
