@@ -63,6 +63,7 @@
   </div>
 
   <div class="stuff">
+
     <!-- ////////////// TO-DO /////////////////// -->
     <q-list class="todo-list" separator>
       <div class="text-h5 todo-title">Todo List</div>
@@ -70,15 +71,20 @@
         v-model="newTask"
         class="input-task"
         placeholder="Add task"
-        dense
         counter
+        clearable
+        dense
         maxlength="28"
         @keyup.enter="createTodo"
       >
-        <template v-slot:append>
-          <q-btn round dense flat icon="add" @click="createTodo" />
-        </template>
       </q-input>
+      <template v-if="newTask" v-slot:append>
+        <q-icon
+          name="cancel"
+          @click.stop="newTask = null"
+          class="cursor-pointer"
+        />
+      </template>
       <q-item
         v-ripple
         v-for="(item, index) in Todos"
@@ -113,18 +119,14 @@
           ></q-btn>
         </q-item-section>
       </q-item>
-      <div class="q-pa-md">
-        <q-linear-progress size="25px" :value="progress" color="accent">
-          <div class="absolute-full flex flex-center">
-            <q-badge
-              color="white"
-              text-color="accent"
-              :label="progressLabel"
-            />
-          </div>
-        </q-linear-progress>
-      </div>
     </q-list>
+
+    <!--- MarkDown Editor 
+
+    <div class="q-pa-md">
+      <q-editor v-model="noteContent" min-height="5rem" color="black" />
+    </div>
+    -->
 
     <!-- ////////////// NOTES /////////////////// -->
     <q-list class="q-pa-md note" v-for="(thing, index) in Notes" :key="thing">
@@ -152,11 +154,10 @@
 import project_crud from 'src/modules/project_crud';
 import todo_crud from 'src/modules/todo_crud';
 import note_crud from 'src/modules/note_crud';
-import { ref, watch, computed } from 'vue';
+import { ref } from 'vue';
 
 export default {
   setup() {
-    const progress = ref(0.3)
     const noteCrud = note_crud;
     const { getNotes, Notes, createNote, deleteNote, noteTitle, noteContent } =
       noteCrud();
@@ -190,20 +191,7 @@ export default {
     void getTodos();
     void getNotes();
 
-    watch(Todos, (newTask) => {
-      if (newTask.length >= 0) {
-        void getTodos();
-      }
-    });
-
-    watch(Notes, (newNote) => {
-      if (newNote.length >= 0) {
-        void getNotes();
-      }
-    });
-
     return {
-      progressLabel: computed(() => (progress.value * 100).toFixed(2) + '%'),
       allTodosURL,
       noteTitle,
       noteContent,
@@ -235,7 +223,5 @@ export default {
       Project,
     };
   },
-
-  name: 'singleProject',
 };
 </script>

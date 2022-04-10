@@ -13,7 +13,7 @@ const todoCrud = () => {
 
     const state = reactive({
       Todos: [],
-      newTask: '' as string,
+      newTask: ref(''),
     });
 
     type SetTodoUnDone = {
@@ -61,7 +61,9 @@ const todoCrud = () => {
         const result = (await response.json()) as GetTodosResponse;
         // @ts-expect-error: Unreachable code error
         state.Todos = result;
+
         return result;
+
       } catch (error) {
         if (error instanceof Error) {
           console.log('error message: ', error.message);
@@ -92,10 +94,12 @@ const todoCrud = () => {
           throw new Error(`Error! status: ${response.status}`);
         }
         const result = (await response.json()) as CreateTodoResponse;
+    
         // @ts-expect-error: Unreachable code error
         state.Todos.push(result);
-        
+        void getTodos();
         return result;
+        
 
       } catch (error) {
         if (error instanceof Error) {
@@ -193,6 +197,7 @@ const todoCrud = () => {
         const result = (await response.json()) as GetTodosResponse;
         
         state.Todos.splice(index, 1);
+
         $q.notify('Todo deleted');
 
         return result;

@@ -86,7 +86,7 @@ const noteCrud = () => {
             const result = (await response.json()) as CreateNoteResponse;
             // @ts-expect-error: Unreachable code error
             state.Notes.push(result);
-
+            void getNotes();
             return result;
 
         } catch (error) {
