@@ -92,7 +92,6 @@ eslint-disable @typescript-eslint/no-unsafe-assignment */
       navigation
       padding
       arrows
-      height="450px"
       class="bg-crsl text-white"
       @mouseenter="autoplay = false"
       @mouseleave="autoplay = true"

@@ -68,3 +68,8 @@ a {
     font-size: .9em;
     font-weight: bold;
 }
+
+
+@media only screen and (max-width: 600px) {
+    .projects { width: 200px !important; }
+}

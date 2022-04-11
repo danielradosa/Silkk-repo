@@ -5,10 +5,10 @@
     </div>
 
     <div class="text-h5 project-subtitle">
-      Deadline: <span> {{ Project.deadline }}</span>
-      <span> by {{ Author.data.name }} </span>
+      Deadline: <span class="sii"> {{ Project.deadline }}</span>
+      <span class="sii"> by {{ Author.data.name }} </span>
       <br />
-      Description: <span> {{ Project.description }}</span>
+      Description: <span class="sii"> {{ Project.description }}</span>
     </div>
 
     <q-btn
@@ -18,7 +18,7 @@
       @click="newNote = true"
     />
     <q-dialog v-model="newNote">
-      <q-card style="min-width: 350px">
+      <q-card style="min-width: 350px" class="note-box">
         <q-card-section>
           <div class="list-title">title</div>
         </q-card-section>

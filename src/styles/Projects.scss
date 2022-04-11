@@ -109,7 +109,7 @@
 }
 
 @media only screen and (max-width: 500px) {
-    .project-container {   }
+    .project-container {  display: grid; margin-left: -18em !important; }
     .projects { .project-title { margin-left: 0.8em;  } }
     .single-projects { width: 300px !important; margin-left: -9em !important;}
 }

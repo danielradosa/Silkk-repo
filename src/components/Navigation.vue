@@ -1,7 +1,7 @@
 <template>
   <q-bar class="navigation" v-if="user">
     <div class="q-pa-md">
-      <span  class="text-h5 kream-logo"><q-btn to="../projects" unelevated style="none" size="1em">Silkk™</q-btn></span>      
+      <span  class="text-h5 kream-logo"><q-btn class="isl" to="../projects" unelevated style="none" size="1em">Silkk™</q-btn></span>      
     </div>
     <div class="q-pa-md">
       <router-link to="/project/create-new">
@@ -16,7 +16,7 @@
       </router-link>
     </div>
     <q-space />
-    <q-avatar size="36px">
+    <q-avatar size="36px" class="avat">
       <img
         src="https://user-images.githubusercontent.com/30195/34457818-8f7d8c76-ed82-11e7-8474-3825118a776d.png"
       />
@@ -29,7 +29,7 @@
         class="dropdown-btn profile-mobile"
         label="My Profile"
       >
-        <div class="row no-wrap q-pa-md">
+        <div class="row no-wrap q-pa-md mennu">
           <div class="column">
             <q-avatar size="72px">
               <img
@@ -37,7 +37,7 @@
               />
             </q-avatar>
 
-            <div class="text-subtitle1 q-mt-md q-mb-xs text-black">
+            <div class="text-subtitle1 q-mt-md q-mb-xs text-black user-mail">
               {{ user }}
             </div>
 
@@ -51,6 +51,7 @@
               size="sm"
               v-close-popup
             />
+
           </div>
         </div>
       </q-btn-dropdown>
@@ -88,16 +89,6 @@ export default {
     return {
       logOut,
       user,
-
-      faveProjects() {
-        //
-      },
-
-      normProjects() {
-        //
-      },
-
-      
     };
   },
   name: 'Navigation',

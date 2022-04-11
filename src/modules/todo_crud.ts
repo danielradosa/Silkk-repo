@@ -97,7 +97,9 @@ const todoCrud = () => {
     
         // @ts-expect-error: Unreachable code error
         state.Todos.push(result);
+        reactive(state).newTask = '';
         void getTodos();
+
         return result;
         
 
