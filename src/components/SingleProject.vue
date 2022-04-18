@@ -12,6 +12,50 @@
     </div>
 
     <q-btn
+      label="Create new todo list"
+      class="add-btn"
+      flat
+      @click="newList = true"
+    />
+    <q-dialog v-model="newList">
+      <q-card style="min-width: 350px" class="note-box">
+        <q-card-section>
+          <div class="list-title">title</div>
+        </q-card-section>
+
+        <q-card-section class="q-pt-none">
+          <q-input
+            dense
+            color="grey"
+            counter
+            maxlength="28"
+            v-model="listTitle"
+            autofocus
+            @keyup.enter="prompt = false"
+          />
+        </q-card-section>
+
+        <q-card-actions align="right" class="text-primary">
+          <q-btn
+            flat
+            label="Cancel"
+            class="prompt-btn"
+            color="red"
+            v-close-popup
+          />
+          <q-btn
+            flat
+            @click="createList()"
+            label="Create"
+            class="prompt-btn"
+            color="black"
+            v-close-popup
+          />
+        </q-card-actions>
+      </q-card>
+    </q-dialog>
+
+    <q-btn
       label="Create new note"
       class="add-btn"
       flat
@@ -63,10 +107,9 @@
   </div>
 
   <div class="stuff">
-
     <!-- ////////////// TO-DO /////////////////// -->
-    <q-list class="todo-list" separator>
-      <div class="text-h5 todo-title">Todo List</div>
+    <q-list class="todo-list" separator v-for="list in Lists" :key="list">
+      <div class="text-h5 todo-title">{{ list.title }} <q-icon></q-icon></div>
       <q-input
         v-model="newTask"
         class="input-task"
@@ -154,13 +197,15 @@
 import project_crud from 'src/modules/project_crud';
 import todo_crud from 'src/modules/todo_crud';
 import note_crud from 'src/modules/note_crud';
+import list_crud from 'src/modules/list_crud';
 import { ref } from 'vue';
 
 export default {
   setup() {
+    const listCrud = list_crud;
+    const { createList, deleteList, listTitle, getLists, Lists } = listCrud();
     const noteCrud = note_crud;
-    const { getNotes, Notes, createNote, deleteNote, noteTitle, noteContent } =
-      noteCrud();
+    const { getNotes, Notes, createNote, deleteNote, noteTitle, noteContent } = noteCrud();
     const todoCrud = todo_crud;
     const {
       allTodosURL,
@@ -190,10 +235,13 @@ export default {
     void getAuthor();
     void getTodos();
     void getNotes();
+    void getLists();
 
     return {
+      listCrud,
       allTodosURL,
       noteTitle,
+      listTitle,
       noteContent,
       noteCrud,
       createNote,
@@ -210,6 +258,7 @@ export default {
       todoCrud,
       projID,
       newNote: ref(false),
+      newList: ref(false),
       address: ref(''),
       updateProjectTitle,
       getAuthor,
@@ -221,6 +270,10 @@ export default {
       user,
       token,
       Project,
+      createList,
+      deleteList,
+      getLists,
+      Lists,
     };
   },
 };
