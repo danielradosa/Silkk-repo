@@ -39,13 +39,13 @@ const todoCrud = () => {
     };
 
     // URLS
-    const allTodosURL = `https://sill-api-app.herokuapp.com/api/project/todo/all/${projID}`;
+    const allTodosURL = `https://sill-api-app.herokuapp.com/api/project/todo/all/${projID}/`;
     const completeTodoURL = `https://sill-api-app.herokuapp.com/api/project/todo/complete/${projID}/`;
     const uncompleteTodoURL = `https://sill-api-app.herokuapp.com/api/project/todo/uncomplete/${projID}/`;
     const deleteTodoURL = `https://sill-api-app.herokuapp.com/api/project/todo/delete/${projID}/`;
-    const createTodoURL = `https://sill-api-app.herokuapp.com/api/project/todo/create/${projID}`;
+    const createTodoURL = `https://sill-api-app.herokuapp.com/api/project/todo/create/${projID}/`;
 
-    // Get all todos
+    // Get all todos in all lists
     async function getTodos() {
       try {
         const response = await fetch(allTodosURL, {
@@ -74,6 +74,7 @@ const todoCrud = () => {
         }
       }
     }
+    
 
     // Create todo
     async function createTodo() {

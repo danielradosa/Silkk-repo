@@ -6,6 +6,8 @@
 	border-radius: 5px;
 	box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
 	color: $blue;
+	padding: 1em;
+	margin-right: 2em;
 
 	.input-task {
 		padding: 1em;
@@ -58,7 +60,7 @@
 	height: auto;
 	box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
 	color: $blue;
-	margin-left: 3em;
+	margin-left: .5em;
 	
 	.note-content {
 		margin-top: 1em;

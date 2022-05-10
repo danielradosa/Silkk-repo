@@ -7,6 +7,18 @@ const routes: RouteRecordRaw[] = [
     children: [{ path: '', component: () => import('pages/Index.vue') }],
   },
   {
+    path: '/admin',
+    meta: { requiresAuth: true },
+    component: () => import('layouts/AdminLayout.vue'),
+    children: [{ path: '', component: () => import('pages/Admin.vue') }],
+  },
+  {
+    path: '/panel',
+    meta: { requiresAuth: true },
+    component: () => import('layouts/AdminPanelLayout.vue'),
+    children: [{ path: '', component: () => import('pages/Panel.vue') }],
+  },
+  {
     path: '/projects',
     meta: { requiresAuth: true },
     component: () => import('layouts/ProjectLayout.vue'),

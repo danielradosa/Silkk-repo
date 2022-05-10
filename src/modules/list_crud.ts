@@ -30,8 +30,8 @@ const listCrud = () => {
 
     // URLS
     const allListsURL = `https://sill-api-app.herokuapp.com/api/project/list/all/${projID}`;
-    const createListURL = `https://sill-api-app.herokuapp.com/api/project/list/create/${projID}/`;
-    const deleteListURL = `https://sill-api-app.herokuapp.com/api/project/list/delete/${projID}`;
+    const createListURL = `https://sill-api-app.herokuapp.com/api/project/list/create/${projID}`;
+    const deleteListURL = `https://sill-api-app.herokuapp.com/api/project/list/delete/${projID}/`;
 
     // Get all lists
     async function getLists() {
@@ -96,9 +96,9 @@ const listCrud = () => {
     }
 
     // Delete list
-    async function deleteList(_id: string, index: number) {
+    async function deleteList(_id: string, listIndex: number) {
         try {
-          const response = await fetch(deleteListURL + _id, {
+          const response = await fetch(deleteListURL + _id , {
             method: 'DELETE',
             headers: {
               'Content-Type': 'application/json',
@@ -112,7 +112,7 @@ const listCrud = () => {
           }
   
           const result = (await response.json()) as GetListsResponse;
-          state.Lists.splice(index, 1);
+          state.Lists.splice(listIndex, 1);
           $q.notify('List deleted');
   
           return result;
