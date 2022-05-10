@@ -96,7 +96,7 @@ const listCrud = () => {
     }
 
     // Delete list
-    async function deleteList(_id: string, listIndex: number) {
+    async function deleteList(_id: string, index: number) {
         try {
           const response = await fetch(deleteListURL + _id , {
             method: 'DELETE',
@@ -112,7 +112,7 @@ const listCrud = () => {
           }
   
           const result = (await response.json()) as GetListsResponse;
-          state.Lists.splice(listIndex, 1);
+          state.Lists.splice(index, 1);
           $q.notify('List deleted');
   
           return result;

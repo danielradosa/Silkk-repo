@@ -108,8 +108,15 @@
 
   <div class="stuff">
     <!-- ////////////// TO-DO /////////////////// -->
-    <q-list class="todo-list" separator v-for="list in Lists" :key="list">
-      <div class="text-h5 todo-title">{{ list.listTitle }} <q-icon></q-icon></div>
+    <q-list class="todo-list" separator v-for="(list, index) in Lists" :key="list">
+      <div class="text-h5 todo-title">{{ list.listTitle }} <q-icon><q-btn
+            flat
+            dense
+            round
+            color="grey"
+            icon="delete"
+            @click.stop="deleteList(list._id as string, index)"
+          ></q-btn></q-icon></div>
       <q-input
         v-model="newTask"
         class="input-task"
