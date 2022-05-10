@@ -125,7 +125,7 @@
         clearable
         dense
         maxlength="28"
-        @keyup.enter="createTodo"
+        @keyup.enter="createTodo(list._id as string)"
       >
       </q-input>
       <template v-if="newTask" v-slot:append>
@@ -170,13 +170,6 @@
         </q-item-section>
       </q-item>
     </q-list>
-
-    <!--- MarkDown Editor 
-
-    <div class="q-pa-md">
-      <q-editor v-model="noteContent" min-height="5rem" color="black" />
-    </div>
-    -->
 
     <!-- ////////////// NOTES /////////////////// -->
     <q-list class="q-pa-md note" v-for="(thing, index) in Notes" :key="thing">

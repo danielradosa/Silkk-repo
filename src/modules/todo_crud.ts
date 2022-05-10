@@ -39,11 +39,11 @@ const todoCrud = () => {
     };
 
     // URLS
-    const allTodosURL = `https://sill-api-app.herokuapp.com/api/project/todo/all/${projID}/`;
-    const completeTodoURL = `https://sill-api-app.herokuapp.com/api/project/todo/complete/${projID}/`;
-    const uncompleteTodoURL = `https://sill-api-app.herokuapp.com/api/project/todo/uncomplete/${projID}/`;
-    const deleteTodoURL = `https://sill-api-app.herokuapp.com/api/project/todo/delete/${projID}/`;
-    const createTodoURL = `https://sill-api-app.herokuapp.com/api/project/todo/create/${projID}/`;
+    const allTodosURL = `https://sill-api-app.herokuapp.com/api/project/list/task/all/${projID}/`;
+    const completeTodoURL = `https://sill-api-app.herokuapp.com/api/project/list/task/complete/${projID}/`;
+    const uncompleteTodoURL = `https://sill-api-app.herokuapp.com/api/project/list/task/uncomplete/${projID}/`;
+    const deleteTodoURL = `https://sill-api-app.herokuapp.com/api/project/list/task/delete/${projID}/`;
+    const createTodoURL = `https://sill-api-app.herokuapp.com/api/project/list/task/create/${projID}/`;
 
     // Get all todos in all lists
     async function getTodos() {
@@ -74,12 +74,11 @@ const todoCrud = () => {
         }
       }
     }
-    
 
     // Create todo
-    async function createTodo() {
+    async function createTodo(_id: string) {
       try {
-        const response = await fetch(createTodoURL, {
+        const response = await fetch(createTodoURL + _id, {
           method: 'POST',
           headers: {
             Accept: 'application/json',
