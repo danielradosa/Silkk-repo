@@ -98,7 +98,7 @@ const projectCrud = () => {
       const response = await fetch(urlAll, {
         method: 'GET',
         headers: {
-          Accept: 'application/json',
+          'Content-Type': 'application/json',
           'auth-token': token as string
         },
       });
@@ -108,10 +108,10 @@ const projectCrud = () => {
       }
 
       const result = (await response.json()) as GetProjectResponse;
-
       // @ts-expect-error: Unreachable code error
       state.Project = result;
       return result;
+
     } catch (error) {
       if (error instanceof Error) {
         console.log('error message: ', error.message);

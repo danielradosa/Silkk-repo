@@ -11,8 +11,8 @@ const userCrud = () => {
     const user = Cookies.get('userEmail');
     const userToken = Cookies.get('userToken');
     const login_URL = 'https://sill-api-app.herokuapp.com/api/user/login';
-    const allUsers_URL = 'http://localhost:4000/api/user/';
-    const deleteUser_URL = 'http://localhost:4000/api/user/delete/';
+    const allUsers_URL = 'http://sill-api-app.herokuapp.com/api/user/';
+    const deleteUser_URL = 'http://sill-api-app.herokuapp.com/api/user/delete/';
     const token = Cookies.get('userToken');
 
     const state = reactive({
@@ -66,7 +66,8 @@ const userCrud = () => {
         try {
             const response = await axios.delete(deleteUser_URL + email, {
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'auth-token': token as string
                 },
             });
             setTimeout(() => (window.location.reload()), 2000);
