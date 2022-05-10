@@ -109,7 +109,7 @@
   <div class="stuff">
     <!-- ////////////// TO-DO /////////////////// -->
     <q-list class="todo-list" separator v-for="list in Lists" :key="list">
-      <div class="text-h5 todo-title">{{ list.title }} <q-icon></q-icon></div>
+      <div class="text-h5 todo-title">{{ list.listTitle }} <q-icon></q-icon></div>
       <q-input
         v-model="newTask"
         class="input-task"
