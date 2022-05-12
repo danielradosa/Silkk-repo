@@ -107,16 +107,24 @@
   </div>
 
   <div class="stuff">
-    <!-- ////////////// TO-DO /////////////////// -->
-    <q-list class="todo-list" separator v-for="(list, index) in Lists" :key="list">
-      <div class="text-h5 todo-title">{{ list.listTitle }} <q-icon><q-btn
+    <q-list
+      class="todo-list"
+      separator
+      v-for="(list, index) in Lists"
+      :key="list"
+    >
+      <div class="text-h5 todo-title">
+        {{ list.listTitle }} &nbsp;&nbsp;&nbsp;<q-icon
+          ><q-btn
             flat
             dense
             round
             color="grey"
             icon="delete"
             @click.stop="deleteList(list._id as string, index)"
-          ></q-btn></q-icon></div>
+          ></q-btn
+        ></q-icon>
+      </div>
       <q-input
         v-model="newTask"
         class="input-task"
@@ -135,23 +143,24 @@
           class="cursor-pointer"
         />
       </template>
+
       <q-item
         v-ripple
-        v-for="(item, index) in Todos"
+        v-for="item in list.todo"
         :key="item"
         :class="{ 'done bg-grey-3': item.status == true }"
         class="todo-item"
       >
         <q-item-section avatar v-if="item.status == false">
-          <q-checkbox
-            v-model="item.status"
-            @click="completeTodo(item._id as string)"
-          ></q-checkbox>
+          <q-checkbox v-model="item.status" 
+          
+          @click="completeTodo(list._id as string, item._id as string)">
+          </q-checkbox>
         </q-item-section>
         <q-item-section avatar v-else-if="item.status == true">
           <q-checkbox
             v-model="item.status"
-            @click="uncompleteTodo(item._id as string)"
+            @click="uncompleteTodo(list._id as string, item._id as string)"
             color="black"
           ></q-checkbox>
         </q-item-section>
@@ -165,13 +174,12 @@
             round
             color="grey"
             icon="delete"
-            @click.stop="deleteTodo(item._id as string, index)"
+            @click.stop="deleteTodo(list._id as string, item._id as string)"
           ></q-btn>
         </q-item-section>
       </q-item>
     </q-list>
 
-    <!-- ////////////// NOTES /////////////////// -->
     <q-list class="q-pa-md note" v-for="(thing, index) in Notes" :key="thing">
       <div class="note-item q-pa-md">
         <div class="text-h5 note-title">
@@ -195,7 +203,6 @@
 
 <script lang="ts">
 import project_crud from 'src/modules/project_crud';
-import todo_crud from 'src/modules/todo_crud';
 import note_crud from 'src/modules/note_crud';
 import list_crud from 'src/modules/list_crud';
 import { ref } from 'vue';
@@ -203,20 +210,22 @@ import { ref } from 'vue';
 export default {
   setup() {
     const listCrud = list_crud;
-    const { createList, deleteList, listTitle, getLists, Lists } = listCrud();
-    const noteCrud = note_crud;
-    const { getNotes, Notes, createNote, deleteNote, noteTitle, noteContent } = noteCrud();
-    const todoCrud = todo_crud;
     const {
-      allTodosURL,
+      createList,
+      deleteList,
+      listTitle,
+      getLists,
+      Lists,
       Todos,
-      getTodos,
-      completeTodo,
-      uncompleteTodo,
-      deleteTodo,
       createTodo,
       newTask,
-    } = todoCrud();
+      completeTodo,
+      uncompleteTodo,
+      deleteTodo
+    } = listCrud();
+    const noteCrud = note_crud;
+    const { getNotes, Notes, createNote, deleteNote, noteTitle, noteContent } =
+      noteCrud();
     const projectCrud = project_crud;
     const {
       Author,
@@ -233,13 +242,17 @@ export default {
 
     void getSingle();
     void getAuthor();
-    void getTodos();
     void getNotes();
     void getLists();
 
     return {
+      Todos,
+      completeTodo,
+      uncompleteTodo,
+      createTodo,
+      deleteTodo,
+      newTask,
       listCrud,
-      allTodosURL,
       noteTitle,
       listTitle,
       noteContent,
@@ -248,14 +261,6 @@ export default {
       deleteNote,
       Notes,
       getNotes,
-      newTask,
-      createTodo,
-      deleteTodo,
-      uncompleteTodo,
-      completeTodo,
-      getTodos,
-      Todos,
-      todoCrud,
       projID,
       newNote: ref(false),
       newList: ref(false),
