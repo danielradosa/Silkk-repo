@@ -114,7 +114,7 @@
       :key="list"
     >
       <div class="text-h5 todo-title">
-        {{ list.listTitle }} &nbsp;&nbsp;&nbsp;<q-icon
+        {{ list.listTitle }} &nbsp;<q-icon
           ><q-btn
             flat
             dense
@@ -129,8 +129,8 @@
         v-model="newTask"
         class="input-task"
         placeholder="Add task"
-        counter
         clearable
+        counter
         dense
         maxlength="28"
         @keyup.enter="createTodo(list._id as string)"
@@ -152,9 +152,10 @@
         class="todo-item"
       >
         <q-item-section avatar v-if="item.status == false">
-          <q-checkbox v-model="item.status" 
-          
-          @click="completeTodo(list._id as string, item._id as string)">
+          <q-checkbox
+            v-model="item.status"
+            @click="completeTodo(list._id as string, item._id as string)"
+          >
           </q-checkbox>
         </q-item-section>
         <q-item-section avatar v-else-if="item.status == true">
@@ -221,7 +222,7 @@ export default {
       newTask,
       completeTodo,
       uncompleteTodo,
-      deleteTodo
+      deleteTodo,
     } = listCrud();
     const noteCrud = note_crud;
     const { getNotes, Notes, createNote, deleteNote, noteTitle, noteContent } =

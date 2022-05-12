@@ -32,7 +32,7 @@ a {
     font-weight: 600;
     font-size: 1em;
     font-family: $secondaryFont !important;
-    transition: .3s ease-in-out;
+    transition: .5s ease-in-out;
     padding-left: 1.6em;
     padding-right: 1.6em;
     padding-top: 1em;
@@ -48,11 +48,15 @@ a {
     font-weight: 600;
     font-size: 1em;
     font-family: $secondaryFont !important;
-    transition: .3s ease-in-out;
+    transition: .5s ease-in-out;
     padding-left: 1.6em;
     padding-right: 1.6em;
     padding-top: 1em;
     padding-bottom: 1em;
+}
+
+.add-btn:first-of-type:hover {
+    background-image: linear-gradient(to right, $light-blue, $blue);
 }
 
 .list-title {

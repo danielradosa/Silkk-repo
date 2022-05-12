@@ -1,5 +1,5 @@
 .todo-list {
-	width: 300px;
+	min-width: 350px;
 	margin-top: 6em;
 	height: auto;
 	background-color: $off-white;
@@ -16,9 +16,15 @@
 
 	.todo-item {
 		padding: 1em;
+		margin: 1em;
+		border-radius: 5px;
 	}
 
 	.done {
+		margin: 1em;
+		border-radius: 5px;
+		box-shadow: 3px 8px 12px rgba(255, 255, 255, 0.158);
+		
 		.q-item__label {
 			text-decoration: line-through;
 			color: #bbb;
@@ -37,11 +43,8 @@
 
 	.todo-title {
 		text-align: center;
-		font-size: 1.3em;
-		text-transform: uppercase;
 		padding: 1em;
 		border-radius: 5px;
-		font-weight: bold;
 	}
 }
 
