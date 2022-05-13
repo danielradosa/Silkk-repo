@@ -9,6 +9,10 @@
   font-family: $defaultFont;
 }
 
+html {
+  background-color: #777 !important;
+}
+
 .body--light {
   .main {
     width: 100%;
@@ -25,7 +29,7 @@
   .navigation {
     background-color: $silver;
     background: linear-gradient(90deg, $off-white 0%, $silver 100%);
-    max-width: 100%;
+    width: 100%;
     display: flex;
     height: 90px;
   }
@@ -38,6 +42,7 @@
     border-bottom: 1px solid $black;
     border-radius: 0px;
     padding: 0.3em 1em 0.3em 1em;
+    opacity: 0.9;
   }
   
   .outline-btn {

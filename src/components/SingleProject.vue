@@ -151,13 +151,16 @@
         :class="{ 'done bg-grey-3': item.status == true }"
         class="todo-item"
       >
+
         <q-item-section avatar v-if="item.status == false">
           <q-checkbox
             v-model="item.status"
             @click="completeTodo(list._id as string, item._id as string)"
           >
           </q-checkbox>
+          <q-linear-progress dark query rounded color="white" class="q-mt-sm" size="xs" />
         </q-item-section>
+
         <q-item-section avatar v-else-if="item.status == true">
           <q-checkbox
             v-model="item.status"
@@ -165,9 +168,11 @@
             color="black"
           ></q-checkbox>
         </q-item-section>
+
         <q-item-section>
           <q-item-label class="todo-task">{{ item.taskTitle }}</q-item-label>
         </q-item-section>
+
         <q-item-section v-if="item.status == true" side>
           <q-btn
             flat
@@ -179,6 +184,7 @@
           ></q-btn>
         </q-item-section>
       </q-item>
+
     </q-list>
 
     <q-list class="q-pa-md note" v-for="(thing, index) in Notes" :key="thing">
@@ -210,6 +216,7 @@ import { ref } from 'vue';
 
 export default {
   setup() {
+    const progress = ref(0);
     const listCrud = list_crud;
     const {
       createList,

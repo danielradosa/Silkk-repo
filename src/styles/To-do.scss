@@ -6,8 +6,13 @@
 	border-radius: 5px;
 	box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
 	color: $blue;
-	padding: 1em;
+	padding: 1.5em;
 	margin-right: 2em;
+	margin-bottom: 6em;
+	-webkit-backdrop-filter: blur(16px) !important;
+    backdrop-filter: blur(16px) !important;
+    z-index: 9999;
+	opacity: 0.9;
 
 	.input-task {
 		padding: 1em;
@@ -63,7 +68,11 @@
 	height: auto;
 	box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
 	color: $blue;
-	margin-left: .5em;
+	margin-right: 2em;
+	-webkit-backdrop-filter: blur(16px) !important;
+    backdrop-filter: blur(16px) !important;
+    z-index: 9999;
+	opacity: 0.9;
 	
 	.note-content {
 		margin-top: 1em;
