@@ -1,11 +1,11 @@
 .project-subtitle {
-    color: $blue;
-    margin-left: 12em;
-    margin-top: 0.5em;
+  color: $blue;
+  margin-left: 12em;
+  margin-top: 0.5em;
 
-    span {
-        color: $dark-gray;
-    }
+  span {
+    color: $dark-gray;
+  }
 }
 
 .project-single-title {
@@ -14,67 +14,83 @@
   margin-left: 6em;
 }
 
+.noDeadline {
+  background-color: rgb(0, 158, 0);
+  padding-left: .3em;
+  padding-right: .3em;
+  border-radius: 3px;
+  color: $silver !important;
+}
+
+.yesDeadline {
+background-color: rgb(158, 0, 0);
+  padding-left: .3em;
+  padding-right: .3em;
+  border-radius: 3px;
+  color: $silver !important;
+}
+
 a {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 .title-edit {
-    color: $blue;
-    background-color: $off-white;
+  color: $blue;
+  background-color: $off-white;
 }
 
 .add-btn:first-of-type {
-    color: $off-white;
-    background-image: linear-gradient(to left, $blue, $light-blue);
-    letter-spacing: .2em;
-    margin-left: 20.5em !important;
-    margin-top: 2em;
-    font-weight: 600;
-    font-size: 1em;
-    font-family: $secondaryFont !important;
-    transition: .5s ease-in-out;
-    padding-left: 1.6em;
-    padding-right: 1.6em;
-    padding-top: 1em;
-    padding-bottom: 1em;
+  color: $off-white;
+  background-image: linear-gradient(to left, $blue, $light-blue);
+  letter-spacing: 0.2em;
+  margin-left: 20.5em !important;
+  margin-top: 2em;
+  font-weight: 600;
+  font-size: 1em;
+  font-family: $secondaryFont !important;
+  transition: 0.5s ease-in-out;
+  padding-left: 1.6em;
+  padding-right: 1.6em;
+  padding-top: 1em;
+  padding-bottom: 1em;
 }
 
 .add-btn {
-    color: $black;
-    background-image: linear-gradient(to right, $yellow, $dark-yellow);
-    letter-spacing: .2em;
-    margin-left: 1em !important;
-    margin-top: 2em;
-    font-weight: 600;
-    font-size: 1em;
-    font-family: $secondaryFont !important;
-    transition: .5s ease-in-out;
-    padding-left: 1.6em;
-    padding-right: 1.6em;
-    padding-top: 1em;
-    padding-bottom: 1em;
+  color: $black;
+  background-image: linear-gradient(to right, $yellow, $dark-yellow);
+  letter-spacing: 0.2em;
+  margin-left: 1em !important;
+  margin-top: 2em;
+  font-weight: 600;
+  font-size: 1em;
+  font-family: $secondaryFont !important;
+  transition: 0.5s ease-in-out;
+  padding-left: 1.6em;
+  padding-right: 1.6em;
+  padding-top: 1em;
+  padding-bottom: 1em;
 }
 
 .add-btn:first-of-type:hover {
-    background-image: linear-gradient(to right, $light-blue, $blue);
+  background-image: linear-gradient(to right, $light-blue, $blue);
 }
 
 .list-title {
-    color: $blue;
-    font-weight: bold;
-    font-size: 1.2em;
-    font-family: $secondaryFont;
-    text-transform: uppercase;
+  color: $blue;
+  font-weight: bold;
+  font-size: 1.2em;
+  font-family: $secondaryFont;
+  text-transform: uppercase;
 }
 
 .prompt-btn {
-    font-family: $secondaryFont !important;
-    font-size: .9em;
-    font-weight: bold;
+  font-family: $secondaryFont !important;
+  font-size: 0.9em;
+  font-weight: bold;
 }
-
 
 @media only screen and (max-width: 600px) {
-    .projects { width: 200px !important; }
+  .projects {
+    width: 200px !important;
+  }
 }
-

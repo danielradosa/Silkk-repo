@@ -13,10 +13,12 @@ const userCrud = () => {
     const login_URL = 'https://sill-api-app.herokuapp.com/api/user/login';
     const allUsers_URL = 'http://sill-api-app.herokuapp.com/api/user/';
     const deleteUser_URL = 'http://sill-api-app.herokuapp.com/api/user/delete/';
+    const specificUser_URL = `http://sill-api-app.herokuapp.com/api/user/${user as string}`;
     const token = Cookies.get('userToken');
 
     const state = reactive({
-        Users: []
+        Users: [],
+        Admin: []
     });
 
     type GetUsersResponse = {
@@ -31,6 +33,44 @@ const userCrud = () => {
         _v: number;
         admin: boolean;
     };
+
+    type GetAdminResponse = {
+        data: Admin[];
+    }
+
+    type Admin = {
+        admin: true;
+        email: string;
+    }
+
+    // Get admin
+    async function getAdmin() {
+        try {
+            const response = await fetch(specificUser_URL, {
+                method: 'GET',
+                headers: {
+                    Accept: 'application/json',
+                    'auth-token': token as string
+                },
+            });
+            if (!response.ok) {
+                throw new Error(`Error! status: ${response.status}`);
+            }
+            const result = (await response.json()) as GetAdminResponse;
+            // @ts-expect-error: Unreachable code error
+            state.Admin = result;
+            return result;
+            
+        } catch (error) {
+            if (error instanceof Error) {
+                console.log('error message: ', error.message);
+                return error.message;
+            } else {
+                console.log('unexpected error: ', error);
+                return 'An unexpected error occurred';
+            }
+        }
+    }
 
     // GET ALL USERS ////////////////////////////////////////////////////////////////////////////
     async function getAllUsers() {
@@ -175,6 +215,7 @@ const userCrud = () => {
         deleteUser_URL,
         deleteUser,
         ...toRefs(state),
+        getAdmin,
     };
 }
 

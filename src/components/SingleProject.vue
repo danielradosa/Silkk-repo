@@ -5,7 +5,8 @@
     </div>
 
     <div class="text-h5 project-subtitle">
-      Deadline: <span class="sii"> {{ Project.deadline }}</span>
+      Deadline: <span :class="{ 'noDeadline': Project.deadline != finalDate }"> {{ Project.deadline }}</span>
+
       <span class="sii"> by {{ Author.data.name }} </span>
       <br />
       Description: <span class="sii"> {{ Project.description }}</span>
@@ -248,11 +249,19 @@ export default {
       projID,
     } = projectCrud();
 
+    // get current date as a string year/month/day
+    const today = new Date();
+    const dd = String(today.getDate()).padStart(2, '0');
+    const mm = String(today.getMonth() + 1).padStart(2, '0');
+    const yyyy = today.getFullYear();
+    const checkDate = yyyy + '/' + mm + '/' + dd;
+    const finalDate = checkDate.toString();
+
     void getSingle();
     void getAuthor();
     void getNotes();
     void getLists();
-
+    
     return {
       Todos,
       completeTodo,
