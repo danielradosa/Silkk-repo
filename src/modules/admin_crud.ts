@@ -11,9 +11,9 @@ const userCrud = () => {
     const user = Cookies.get('userEmail');
     const userToken = Cookies.get('userToken');
     const login_URL = 'https://sill-api-app.herokuapp.com/api/user/login';
-    const allUsers_URL = 'http://sill-api-app.herokuapp.com/api/user/';
-    const deleteUser_URL = 'http://sill-api-app.herokuapp.com/api/user/delete/';
-    const specificUser_URL = `http://sill-api-app.herokuapp.com/api/user/${user as string}`;
+    const allUsers_URL = 'https://sill-api-app.herokuapp.com/api/user/';
+    const deleteUser_URL = 'https://sill-api-app.herokuapp.com/api/user/delete/';
+    const specificUser_URL = `https://sill-api-app.herokuapp.com/api/user/${user as string}`;
     const token = Cookies.get('userToken');
 
     const state = reactive({
