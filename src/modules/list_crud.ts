@@ -55,6 +55,7 @@ const listCrud = () => {
                     'auth-token': token as string
                 },
                 body: JSON.stringify({
+                    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
                     taskTitle: state.newTask,
                     status: false,
                 }),

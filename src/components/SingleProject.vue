@@ -5,7 +5,7 @@
     </div>
 
     <div class="text-h5 project-subtitle">
-      Deadline: <span :class="{ 'noDeadline': Project.deadline != finalDate }"> {{ Project.deadline }}</span>
+      Deadline: <span class="noDeadline" :class="{ 'yesDeadline': Project.deadline <= finalDate }"> {{ Project.deadline }}</span>
 
       <span class="sii"> by {{ Author.data.name }} </span>
       <br />
@@ -263,6 +263,12 @@ export default {
     void getLists();
     
     return {
+      today,
+      dd,
+      mm,
+      yyyy,
+      checkDate,
+      finalDate,
       Todos,
       completeTodo,
       uncompleteTodo,
