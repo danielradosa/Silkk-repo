@@ -42,6 +42,12 @@ const routes: RouteRecordRaw[] = [
     component: () => import('layouts/LoginLayout.vue'),
     children: [{ path: '', component: () => import('pages/Login.vue') }],
   },
+  {
+    path: '/user',
+    meta: { requiresAuth: true },
+    component: () => import('layouts/ProfileLayout.vue'),
+    children: [{ path: '', component: () => import('pages/Profile.vue') }],
+  },
   // Always leave this as last one,
   {
     path: '/:catchAll(.*)*',

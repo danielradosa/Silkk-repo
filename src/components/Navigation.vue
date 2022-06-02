@@ -1,7 +1,11 @@
 <template>
   <q-bar class="navigation" v-if="user">
     <div class="q-pa-md">
-      <span  class="text-h5 kream-logo"><q-btn class="isl" to="../projects" unelevated style="none" size="1em">Silkk™</q-btn></span>      
+      <span class="text-h5 kream-logo"
+        ><q-btn class="isl" to="../projects" unelevated style="none" size="1em"
+          >Silkk™</q-btn
+        ></span
+      >
     </div>
     <div class="q-pa-md">
       <router-link to="/project/create-new">
@@ -37,13 +41,28 @@
               />
             </q-avatar>
 
-            <div class="text-subtitle1 q-mt-md q-mb-xs text-black user-mail">
+            <div class="text-subtitle2 q-mt-md q-mb-xs text-black user-mail">
               {{ user }}
             </div>
+            <br />
+
+            <q-btn
+              class="outline-btn outline-mobile"
+              label="My Profile"
+              no-caps
+              size="md"
+              unelevated
+              to="/user"
+              color="black"
+              style="text-transform: capitalize;"
+            />
+
+            <br />
 
             <q-btn
               class="outline-btn"
               label="Logout"
+              style="text-transform: capitalize;"
               type="submit"
               @click="logOut"
               unelevated
@@ -51,7 +70,6 @@
               size="sm"
               v-close-popup
             />
-
           </div>
         </div>
       </q-btn-dropdown>
@@ -75,7 +93,6 @@
       />
     </div>
   </q-bar>
-  
 </template>
 
 <script lang="ts">
@@ -83,8 +100,8 @@ import user_crud from 'src/modules/user_crud';
 
 export default {
   setup() {
-    const userCrud = user_crud
-    const { logOut, user } = userCrud()
+    const userCrud = user_crud;
+    const { logOut, user } = userCrud();
 
     return {
       logOut,

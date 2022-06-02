@@ -133,6 +133,7 @@
         clearable
         counter
         dense
+        debounce="1000000000"
         maxlength="28"
         @keyup.enter="createTodo(list._id as string)"
       >
