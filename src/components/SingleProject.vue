@@ -5,7 +5,13 @@
     </div>
 
     <div class="text-h5 project-subtitle">
-      Deadline: <span class="noDeadline" :class="{ 'yesDeadline': Project.deadline <= finalDate }"> {{ Project.deadline }}</span>
+      Deadline:
+      <span
+        class="noDeadline"
+        :class="{ yesDeadline: Project.deadline <= finalDate }"
+      >
+        {{ Project.deadline }}</span
+      >
 
       <span class="sii"> by {{ Author.data.name }} </span>
       <br />
@@ -131,10 +137,8 @@
         class="input-task"
         placeholder="Add task"
         clearable
-        counter
         dense
         debounce="1000000000"
-        maxlength="28"
         @keyup.enter="createTodo(list._id as string)"
       >
       </q-input>
@@ -153,14 +157,19 @@
         :class="{ 'done bg-grey-3': item.status == true }"
         class="todo-item"
       >
-
         <q-item-section avatar v-if="item.status == false">
           <q-checkbox
             v-model="item.status"
             @click="completeTodo(list._id as string, item._id as string)"
           >
           </q-checkbox>
-          <q-linear-progress dark query rounded color="white" class="q-mt-sm" size="xs" />
+          <q-linear-progress
+            query
+            rounded
+            color="black"
+            class="q-mt-sm"
+            size="xs"
+          />
         </q-item-section>
 
         <q-item-section avatar v-else-if="item.status == true">
@@ -186,7 +195,6 @@
           ></q-btn>
         </q-item-section>
       </q-item>
-
     </q-list>
 
     <q-list class="q-pa-md note" v-for="(thing, index) in Notes" :key="thing">
@@ -215,8 +223,12 @@ import project_crud from 'src/modules/project_crud';
 import note_crud from 'src/modules/note_crud';
 import list_crud from 'src/modules/list_crud';
 import { ref } from 'vue';
+import draggable from 'vuedraggable';
 
 export default {
+  components: {
+    draggable,
+  },
   setup() {
     const progress = ref(0);
     const listCrud = list_crud;
@@ -262,7 +274,7 @@ export default {
     void getAuthor();
     void getNotes();
     void getLists();
-    
+
     return {
       today,
       dd,
