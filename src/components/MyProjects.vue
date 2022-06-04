@@ -1,6 +1,48 @@
 <template>
   <div v-if="user">
     <div class="projects">
+      <div class="text-h3 project-title">Collaboration Projects</div>
+    </div>
+
+    <div class="project-container" v-for="item in Project" :key="item">
+      <div class="q-pa-md project-card" v-if="item.associates.includes(user)">
+        <q-card class="my-card single-projects no-shadow no-border-radius">
+          <q-img
+            src="https://media.istockphoto.com/photos/technology-network-picture-id1037573870?b=1&k=20&m=1037573870&s=612x612&w=0&h=QZ8vJf1TxY5GWeIRS7ZUj9jg2GOTGOjp4RZo_chEoD4="
+          >
+            <div class="absolute-bottom">
+              <div class="text-h6">
+                {{ item.title as string }} 
+              </div>
+              <div class="text-subtitle2">by {{ item.authorEmail }}</div>
+            </div>
+          </q-img>
+
+          <q-card-actions class="project-btns">
+            <q-btn
+              unelevated
+              size="md"
+              class="open-btn no-border-radius dropdown-btn"
+              :to="{ path: '/project/' + `${item._id as string}` }"
+              >Open
+            </q-btn>
+
+            <q-btn
+              flat
+              no-caps
+              unelevated
+              size="md"
+              class="delete-btn no-border-radius"
+              color="red"
+              @click="deleteProject(item._id as any)"
+              >Delete</q-btn
+            >    
+          </q-card-actions>
+        </q-card>
+      </div>
+    </div>
+
+    <div class="projects">
       <div class="text-h3 project-title">Favourite Projects</div>
     </div>
 
@@ -14,7 +56,7 @@
               <div class="text-h6">
                 {{ item.title as string }} <q-icon class="fav-star" name="star" color="yellow" @click="removeFromFavourites(item._id as string)" />
               </div>
-              <div class="text-subtitle2">by {{ Author.data.name }}</div>
+              <div class="text-subtitle2">by {{ Author.data.name || item.authorEmail }}</div>
             </div>
           </q-img>
 
@@ -102,12 +144,14 @@ export default {
   
   setup() {
     const projectCrud = project_crud
-    const { removeFromFavourites, addToFavourites, Project, Author, projectTitle, urlAll, user, token, getAll, deleteProject, urlDelete, projID, getAuthor } = projectCrud();
+    const { removeFromFavourites, addToFavourites, Project, Author, projectTitle, urlAll, user, token, getAll, deleteProject, urlDelete, projID, getAuthor, getCollaborations } = projectCrud();
 
     void getAll();
     void getAuthor();
+    void getCollaborations();
 
     return {
+      getCollaborations,
       Author,
       addToFavourites,
       removeFromFavourites,

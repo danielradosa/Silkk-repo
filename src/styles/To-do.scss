@@ -1,31 +1,32 @@
 .todo-list {
-	min-width: 350px;
+	min-width: 400px;
 	margin-top: 6em;
 	height: auto;
 	background-color: $off-white;
-	border-radius: 5px;
-	box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+	box-shadow: 6px 6px 0px rgba(0, 0, 0, 0.2);
+	border: 1px solid $black;
 	color: $blue;
 	padding: 1.5em;
 	margin-right: 2em;
 	margin-bottom: 6em;
 
 	.input-task {
-		padding: 1em;
+		padding: 0em 2em 0em 2em;
 		color: $blue;
 	}
 
 	.todo-item {
-		margin: 0.5em;
-		border-radius: 5px;
+		margin: 1em;
+		font-size: 1rem;
 		background-color: $off-white;
-		border: 1px solid $blue;
+		border: 1px inset $black;
+		transition: .3s ease-in-out;
 	}
 
 	.done {
 		margin: 1em;
-		border-radius: 5px;
-		box-shadow: 3px 8px 12px rgba(255, 255, 255, 0.158);
+		box-shadow: 6px 6px 0px rgba(0, 0, 0, 0.2);
+		border: 1px inset transparent;
 		
 		.q-item__label {
 			text-decoration: line-through;
@@ -41,6 +42,7 @@
 	.q-checkbox__bg {
 		background-color: $off-white;
 		border: 2px solid $blue;
+		border-radius: 0px;
 	}
 
 	.todo-title {
@@ -61,17 +63,23 @@
 .note {
 	margin-top: 6em;
 	background-color: $off-white;
-	border-radius: 5px;
 	height: auto;
-	box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+	box-shadow: 6px 6px 0px rgba(0, 0, 0, 0.2);
+	border: 1px solid $black;
 	color: $blue;
 	margin-right: 2em;
 	-webkit-backdrop-filter: blur(16px) !important;
     backdrop-filter: blur(16px) !important;
-	opacity: 0.9;
 	
 	.note-content {
 		margin-top: 1em;
 		max-width: 400px;
+		color: $black;
+		font-size: 1rem;
 	}
+}
+
+.note-title {
+	margin: .5em;
+	text-align: center;
 }

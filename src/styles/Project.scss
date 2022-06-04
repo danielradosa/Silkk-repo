@@ -18,7 +18,6 @@
   background-color: rgb(0, 158, 0);
   padding-left: .3em;
   padding-right: .3em;
-  border-radius: 3px;
   color: $silver !important;
 }
 
@@ -26,7 +25,6 @@
 background-color: rgb(158, 0, 0);
   padding-left: .3em;
   padding-right: .3em;
-  border-radius: 3px;
   color: $silver !important;
 }
 
@@ -48,31 +46,54 @@ a {
   font-weight: 600;
   font-size: 1em;
   font-family: $secondaryFont !important;
-  transition: 0.5s ease-in-out;
+  transition: 0.3s ease-in-out;
   padding-left: 1.6em;
   padding-right: 1.6em;
   padding-top: 1em;
   padding-bottom: 1em;
+  border-radius: 0px;
 }
 
 .add-btn {
   color: $black;
   background-image: linear-gradient(to right, $yellow, $dark-yellow);
   letter-spacing: 0.2em;
-  margin-left: 1em !important;
+  margin-left: 2em !important;
   margin-top: 2em;
   font-weight: 600;
   font-size: 1em;
   font-family: $secondaryFont !important;
-  transition: 0.5s ease-in-out;
+  transition: 0.3s ease-in-out;
   padding-left: 1.6em;
   padding-right: 1.6em;
   padding-top: 1em;
   padding-bottom: 1em;
+  border-radius: 0px;
+}
+
+.add-associate {
+  color: $black;
+  margin-top: 2em;
+  letter-spacing: 0.2em;
+  font-weight: 600;
+  font-size: .5em;
+  font-family: $secondaryFont !important;
+  transition: 0.3s ease-in-out;
+  padding-left: 1em;
+  border: 1px solid $black;
+  padding-right: 1em;
+  padding-top: .5em;
+  padding-bottom: .5em;
+  border-radius: 0px;
 }
 
 .add-btn:first-of-type:hover {
   background-image: linear-gradient(to right, $light-blue, $blue);
+  box-shadow: 6px 6px 0px $blue;
+}
+
+.add-btn:hover {
+  box-shadow: 6px 6px 0px $dark-yellow;
 }
 
 .list-title {

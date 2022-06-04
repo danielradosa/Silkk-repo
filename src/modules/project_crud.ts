@@ -36,6 +36,10 @@ const projectCrud = () => {
     favourite: boolean;
   }
 
+  type AddAssociate = {
+    associate: string;
+  }
+
   type CreateProjectResponse = {
     title: string;
     favourite: boolean;
@@ -63,8 +67,45 @@ const projectCrud = () => {
   const urlFave = 'https://sill-api-app.herokuapp.com/api/project/addfavorite/';
   const urlRemoveFave = 'https://sill-api-app.herokuapp.com/api/project/removefavorite/';
   const urlUpdateTitle = 'https://sill-api-app.herokuapp.com/api/project/updatetitle/';
+  const urlAddAssociates = `https://sill-api-app.herokuapp.com/api/project/associates/add/${projID}`;
+  // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
+  const urlCollaborations = `https://sill-api-app.herokuapp.com/api/project/associates/${user}`;
   // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
   const author_URL = `https://sill-api-app.herokuapp.com/api/user/${user}`;
+
+  // Add associates to project
+  async function addAssociate(authorEmail: string) {
+    try {
+      const response = await fetch(urlAddAssociates, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+          'auth-token': token as string
+        },
+        body: JSON.stringify({
+          associates: authorEmail,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error(`Error! status: ${response.status}`);
+      }
+
+      location.reload();
+
+      const result = (await response.json()) as AddAssociate;
+      return result;
+    } catch (error) {
+      if (error instanceof Error) {
+        console.log('error message: ', error.message);
+        return error.message;
+      } else {
+        console.log('unexpected error: ', error);
+        return 'An unexpected error occurred';
+      }
+    }
+  }
 
   // GET CURRENT USER ///////////////////////////////////////////////////////////////////////
   async function getAuthor() {
@@ -80,6 +121,36 @@ const projectCrud = () => {
       const result = (await response.json()) as GetAuthorResponse;
       // @ts-expect-error: Unreachable code error
       state.Author = result;
+      return result;
+    } catch (error) {
+      if (error instanceof Error) {
+        console.log('error message: ', error.message);
+        return error.message;
+      } else {
+        console.log('unexpected error: ', error);
+        return 'An unexpected error occurred';
+      }
+    }
+  }
+
+  // GET ALL COLLABORATION PROJECTS //////////////////////////
+  async function getCollaborations() {
+    try {
+      const response = await fetch(urlCollaborations, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'auth-token': token as string
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error(`Error! status: ${response.status}`);
+      }
+
+      const result = (await response.json()) as GetProjectResponse;
+      // @ts-expect-error: Unreachable code error
+      state.Project = result;
       return result;
     } catch (error) {
       if (error instanceof Error) {
@@ -200,7 +271,7 @@ const projectCrud = () => {
           favourite: false,
           description: projectDescription.value,
           deadline: projectDate.value,
-          authorEmail: user,
+          authorEmail: user
         }),
         headers: {
           'Content-Type': 'application/json',
@@ -331,6 +402,8 @@ const projectCrud = () => {
   }
 
   return {
+    getCollaborations,
+    addAssociate,
     updateProjectTitle,
     urlUpdateTitle,
     getAuthor,

@@ -9,13 +9,58 @@
       <span
         class="noDeadline"
         :class="{ yesDeadline: Project.deadline <= finalDate }"
+        >{{ Project.deadline }}</span
       >
-        {{ Project.deadline }}</span
-      >
-
-      <span class="sii"> by {{ Author.data.name }} </span>
+      <span class="sii" v-if="Project.authorEmail == user"> by {{ Project.data.authorEmail }} </span>
+      <span class="sii" v-else> by {{ Project.authorEmail }} </span>
       <br />
       Description: <span class="sii"> {{ Project.description }}</span>
+      <br />
+      Associates: <span class="sii" v-if="Project.associates.includes(user)"> {{ Project.associates }}</span>
+
+      <br />
+
+      <q-btn
+      label="Add Associate"
+      class="add-associate"
+      flat
+      @click="newAssociate = true"
+    />
+    <q-dialog v-model="newAssociate">
+      <q-card style="min-width: 350px" class="note-box">
+        <q-card-section>
+          <div class="list-title">Associates E-mail</div>
+        </q-card-section>
+
+        <q-card-section class="q-pt-none">
+          <q-input
+            dense
+            color="grey"
+            v-model="associateEmail"
+            autofocus
+            @keyup.enter="prompt = false"
+          />
+        </q-card-section>
+
+        <q-card-actions align="right" class="text-primary">
+          <q-btn
+            flat
+            label="Cancel"
+            class="prompt-btn"
+            color="red"
+            v-close-popup
+          />
+          <q-btn
+            flat
+            @click="addAssociate(associateEmail)"
+            label="Add"
+            class="prompt-btn"
+            color="black"
+            v-close-popup
+          />
+        </q-card-actions>
+      </q-card>
+    </q-dialog>
     </div>
 
     <q-btn
@@ -114,12 +159,7 @@
   </div>
 
   <div class="stuff">
-    <q-list
-      class="todo-list"
-      separator
-      v-for="(list, index) in Lists"
-      :key="list"
-    >
+    <q-list class="todo-list" v-for="(list, index) in Lists" :key="list">
       <div class="text-h5 todo-title">
         {{ list.listTitle }} &nbsp;<q-icon
           ><q-btn
@@ -163,13 +203,6 @@
             @click="completeTodo(list._id as string, item._id as string)"
           >
           </q-checkbox>
-          <q-linear-progress
-            query
-            rounded
-            color="black"
-            class="q-mt-sm"
-            size="xs"
-          />
         </q-item-section>
 
         <q-item-section avatar v-else-if="item.status == true">
@@ -250,6 +283,7 @@ export default {
       noteCrud();
     const projectCrud = project_crud;
     const {
+      addAssociate,
       Author,
       Project,
       projectTitle,
@@ -295,9 +329,11 @@ export default {
       noteCrud,
       createNote,
       deleteNote,
+      addAssociate,
       Notes,
       getNotes,
       projID,
+      newAssociate: ref(false),
       newNote: ref(false),
       newList: ref(false),
       address: ref(''),
