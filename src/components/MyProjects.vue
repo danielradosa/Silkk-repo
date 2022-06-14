@@ -1,6 +1,6 @@
 <template>
   <div v-if="user">
-    <div class="projects">
+    <!-- <div class="projects">
       <div class="text-h3 project-title">Collaboration Projects</div>
     </div>
 
@@ -40,7 +40,7 @@
           </q-card-actions>
         </q-card>
       </div>
-    </div>
+    </div> -->
 
     <div class="projects">
       <div class="text-h3 project-title">Favourite Projects</div>
@@ -148,7 +148,7 @@ export default {
 
     void getAll();
     void getAuthor();
-    void getCollaborations();
+    //void getCollaborations();
 
     return {
       getCollaborations,
