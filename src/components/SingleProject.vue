@@ -256,12 +256,8 @@ import project_crud from 'src/modules/project_crud';
 import note_crud from 'src/modules/note_crud';
 import list_crud from 'src/modules/list_crud';
 import { ref } from 'vue';
-import draggable from 'vuedraggable';
 
 export default {
-  components: {
-    draggable,
-  },
   setup() {
     const progress = ref(0);
     const listCrud = list_crud;
