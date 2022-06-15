@@ -259,7 +259,7 @@ import { ref } from 'vue';
 
 export default {
   setup() {
-    //const progress = ref(0);
+    const progress = ref(0);
     const listCrud = list_crud;
     const {
       createList,
